@@ -13,12 +13,12 @@ class AddTaskViewController: UIViewController {
     var mainVC: ViewController!
     
     @IBOutlet weak var taskTextField: UITextField!
-    @IBOutlet weak var subtaskTextField: UITextField!
+   // @IBOutlet weak var subtaskTextField: UITextField!
     @IBOutlet weak var dueDatePicker: UIDatePicker!
     ///2.16
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        dueDatePicker.date = Date.from("00:05")
         // Do any additional setup after loading the view.
     }
 
@@ -33,11 +33,9 @@ class AddTaskViewController: UIViewController {
 
     @IBAction func addTaskButtonTapped(sender: UIButton) {
        
-        var task = TaskModel(task: taskTextField.text!, subtask: subtaskTextField.text!, date: dueDatePicker.date)
+        var task = TaskModel(task: taskTextField.text!, date: dueDatePicker.date)
         mainVC.taskArray.append(task)
         
-        //?
-        //mainVC.tableView.reloadData()
         self.dismissViewControllerAnimated(true, completion: nil)
         
     }

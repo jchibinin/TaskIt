@@ -61,7 +61,21 @@ class PropertiesViewController: UIViewController {
         self.dismissViewControllerAnimated(true, completion: nil)
         
     }
+    //shedule actions
+    @IBAction func newSheduleTapped(sender: UIButton) {
+        mainVC.taskArray.removeAll()
+    }
     
+    
+    @IBAction func saveSheduleTapped(sender: AnyObject) {
+    
+        var alert = UIAlertController(title: "Save", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "in new", style: UIAlertActionStyle.Default, handler:{(alert: UIAlertAction!) in self.saveInNew()}))
+        alert.addAction(UIAlertAction(title: "in exist", style: UIAlertActionStyle.Default, handler:nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+      
+       
+    }
 
     /*
     // MARK: - Navigation
@@ -72,5 +86,21 @@ class PropertiesViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func saveInNew(){
+        
+        self.performSegueWithIdentifier("showAddShed", sender: self)
 
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "showAddShed" {
+            
+            let addShedVC: AddShedViewController = segue.destinationViewController as! AddShedViewController
+            
+            addShedVC.mainVC = self.mainVC
+            
+        }
+    }
 }

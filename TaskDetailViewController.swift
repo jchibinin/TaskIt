@@ -14,7 +14,7 @@ class TaskDetailViewController: UIViewController {
     
     var mainVC: ViewController!
     
-    @IBOutlet weak var subtaskTextField: UITextField!
+  //  @IBOutlet weak var subtaskTextField: UITextField!
     @IBOutlet weak var taskTexField: UITextField!
     @IBOutlet weak var dueDatePicker: UIDatePicker!
     
@@ -24,7 +24,6 @@ class TaskDetailViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         self.taskTexField.text = detailTaskModel.task
-        self.subtaskTextField.text = detailTaskModel.subtask
         self.dueDatePicker.date = detailTaskModel.date
         
        
@@ -44,7 +43,7 @@ class TaskDetailViewController: UIViewController {
 
     @IBAction func doneBarButtonItemTapped(sender: UIBarButtonItem) {
         
-        var task = TaskModel(task: taskTexField.text!, subtask: subtaskTextField.text!, date: dueDatePicker.date)
+        var task = TaskModel(task: taskTexField.text!, date: dueDatePicker.date)
         
         mainVC.taskArray[(mainVC.currentIndexPath.row)] = task
         

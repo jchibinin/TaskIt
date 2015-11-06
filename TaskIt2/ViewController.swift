@@ -18,8 +18,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var from: Bool = Bool.init()
     
     var taskArray:[TaskModel]=[]
-    
+    var shedArray:[ShedModel]=[]
+    var currentShed: ShedModel = ShedModel(shedName: "", taskArray: [])
     var currentIndexPath: NSIndexPath = NSIndexPath.init()
+    var timer: NSTimer = NSTimer.init()
     
     var activeTask: Int = 0
     
@@ -34,16 +36,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let date2 = Date.from("00:10")
         let date3 = Date.from("00:15")
         
-        let task1 = TaskModel(task: "Дорога на работу", subtask: "", date: date1)
-        let task2 = TaskModel(task: "Еда", subtask: "", date: date2)
+        let task1 = TaskModel(task: "Дорога на работу", date: date1)
+        let task2 = TaskModel(task: "Еда", date: date2)
         
-       // timeBegin = Date.from("07:30")
-       // timeEnd   = Date.from("08:00")
+        taskArray = [task1, task2, TaskModel(task: "Утренние процедуры", date: date3)]
+        
+        ////
         from = true
-        
-        taskArray = [task1, task2, TaskModel(task: "Утренние процедуры", subtask: "", date: date3)]
-        
-        var timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("myHandler"), userInfo: nil, repeats: true)
+        let shed1 = ShedModel(shedName: "Morning", taskArray: taskArray)
+        shedArray.append(shed1)
+        //
+        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("myHandler"), userInfo: nil, repeats: true)
         
         self.tableView.reloadData()
         
@@ -68,11 +71,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         
         self.tableView.reloadData()
+        
+        if timer.valid == false{
+            timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("myHandler"), userInfo: nil, repeats: true)
+        }
     }
     
     //timer
     func myHandler() {
        
+        if editButton.tag == 100 {
+        
         var tasksSeconds:Int = 0
         var taskSeconds:Int = 0
         var timeEndTask, timeBeginTask: NSDate
@@ -81,13 +90,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         var dateComparisionResultEnd:NSComparisonResult
         var dateComparisionResultBegin:NSComparisonResult
         var secsToEndTask: Int
+        var cellText: String = ""
+        var lastActiveTask: Int = activeTask
+        
         for task in taskArray {
             timeEndTask = timeEnd.dateByAddingTimeInterval(-Double(tasksSeconds))
             taskSeconds = Date.toIntSec(date: task.date)
             timeBeginTask = timeEnd.dateByAddingTimeInterval(-Double(tasksSeconds+taskSeconds))
             dateComparisionResultEnd = currentTime.compare(timeEndTask)
             dateComparisionResultBegin = currentTime.compare(timeBeginTask)
-            
+            cellText = ""
             // set active tasks
             if dateComparisionResultEnd == NSComparisonResult.OrderedAscending &&
                 dateComparisionResultBegin == NSComparisonResult.OrderedDescending {
@@ -97,14 +109,25 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 secsToEndTask = Date.toIntSec(date: task.date) - Int(NSDate().timeIntervalSinceDate(timeBeginTask))
                 let minutes = Int(secsToEndTask/60)
                 let cellText = String(format:"%d:%02d", minutes, secsToEndTask - minutes*60)
-                print(cellText)
+               ///update cell
+                    let indexPath: NSIndexPath = NSIndexPath(forItem: activeTask, inSection: 0)
+                    let cell: TaskCell = tableView.cellForRowAtIndexPath(indexPath) as! TaskCell
+                    cell.descriptionLabel.text = cellText
+
+            } else {
+                
+                let indexPath: NSIndexPath = NSIndexPath(forItem: index, inSection: 0)
+                let cell: TaskCell = tableView.cellForRowAtIndexPath(indexPath) as! TaskCell
+               // if cell.descriptionLabel.text != "" {
+                    cell.descriptionLabel.text = ""
+               // }
             }
             
             tasksSeconds = tasksSeconds + taskSeconds
             index = index+1
         }
-        
-        
+        }
+                
     }
     
     override func didReceiveMemoryWarning() {
@@ -113,7 +136,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-      
+    
+        
          if segue.identifier == "showTaskDetail" {
             
             let detailVC: TaskDetailViewController = segue.destinationViewController as! TaskDetailViewController
@@ -149,7 +173,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBAction func addButtonTapped(sender: UIBarButtonItem) {
      
         self.performSegueWithIdentifier("showTaskAdd", sender: self)
-        
+        timer.invalidate()
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -172,7 +196,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let cell: TaskCell = tableView.dequeueReusableCellWithIdentifier("myCell", forIndexPath: indexPath) as! TaskCell
         
         cell.taskLabel.text = thisTask.task
-        cell.descriptionLabel.text = thisTask.subtask
+        cell.descriptionLabel.text = ""
         cell.dateLabel.text = Date.toString(date: thisTask.date)
         
        // cell.showsReorderControl = true
