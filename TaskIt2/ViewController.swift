@@ -160,8 +160,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             
             propertiesVC.mainVC = self
             
-        }
-        
+         }         
     }
     
     @IBAction func propetiesButtonTapped(sender: UIBarButtonItem) {

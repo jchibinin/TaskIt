@@ -20,6 +20,7 @@
 		6640A4691BECCCA3003718D5 /* ShedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6640A4681BECCCA3003718D5 /* ShedModel.swift */; };
 		6640A46F1BED4E94003718D5 /* AddShedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6640A46E1BED4E94003718D5 /* AddShedViewController.swift */; };
 		66592B371BD96AD400A6AF7F /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66592B361BD96AD400A6AF7F /* Date.swift */; };
+		665C61A71BEE6DEC00F4ABA6 /* SaveShedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665C61A61BEE6DEC00F4ABA6 /* SaveShedViewController.swift */; };
 		66CF43021BD58A3100A6B56D /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CF43011BD58A3100A6B56D /* TaskModel.swift */; };
 		66D0EBBD1BD6C04D00C1C785 /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D0EBBC1BD6C04D00C1C785 /* TaskDetailViewController.swift */; };
 		66F0AA811BDD67C8007E4683 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F0AA801BDD67C8007E4683 /* AddTaskViewController.swift */; };
@@ -62,6 +63,7 @@
 		6640A4681BECCCA3003718D5 /* ShedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShedModel.swift; sourceTree = "<group>"; };
 		6640A46E1BED4E94003718D5 /* AddShedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddShedViewController.swift; sourceTree = "<group>"; };
 		66592B361BD96AD400A6AF7F /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		665C61A61BEE6DEC00F4ABA6 /* SaveShedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveShedViewController.swift; sourceTree = "<group>"; };
 		66CF43011BD58A3100A6B56D /* TaskModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskModel.swift; path = ../TaskModel.swift; sourceTree = "<group>"; };
 		66D0EBBC1BD6C04D00C1C785 /* TaskDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskDetailViewController.swift; path = ../TaskDetailViewController.swift; sourceTree = "<group>"; };
 		66F0AA801BDD67C8007E4683 /* AddTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				662CEDB31BD3E2A70051D4DA /* AppDelegate.swift */,
 				662CEDB51BD3E2A70051D4DA /* ViewController.swift */,
 				662CEDB71BD3E2A70051D4DA /* Main.storyboard */,
+				665C61A61BEE6DEC00F4ABA6 /* SaveShedViewController.swift */,
 				66045BBF1BE7EF2100F63E42 /* PropertiesViewController.swift */,
 				6640A46E1BED4E94003718D5 /* AddShedViewController.swift */,
 				662CEDBD1BD3E2A70051D4DA /* Assets.xcassets */,
@@ -287,6 +290,7 @@
 				6640A46F1BED4E94003718D5 /* AddShedViewController.swift in Sources */,
 				662CEE211BD423310051D4DA /* TaskCell.swift in Sources */,
 				66592B371BD96AD400A6AF7F /* Date.swift in Sources */,
+				665C61A71BEE6DEC00F4ABA6 /* SaveShedViewController.swift in Sources */,
 				662CEDB61BD3E2A70051D4DA /* ViewController.swift in Sources */,
 				66CF43021BD58A3100A6B56D /* TaskModel.swift in Sources */,
 				662CEDB41BD3E2A70051D4DA /* AppDelegate.swift in Sources */,

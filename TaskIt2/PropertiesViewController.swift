@@ -71,7 +71,7 @@ class PropertiesViewController: UIViewController {
     
         var alert = UIAlertController(title: "Save", message: "", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "in new", style: UIAlertActionStyle.Default, handler:{(alert: UIAlertAction!) in self.saveInNew()}))
-        alert.addAction(UIAlertAction(title: "in exist", style: UIAlertActionStyle.Default, handler:nil))
+        alert.addAction(UIAlertAction(title: "in exist", style: UIAlertActionStyle.Default, handler:{(alert: UIAlertAction!) in self.saveInExist()}))
         self.presentViewController(alert, animated: true, completion: nil)
       
        
@@ -93,6 +93,13 @@ class PropertiesViewController: UIViewController {
 
     }
 
+    
+    func saveInExist(){
+        
+        self.performSegueWithIdentifier("showSaveShed", sender: self)
+        
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "showAddShed" {
@@ -100,6 +107,12 @@ class PropertiesViewController: UIViewController {
             let addShedVC: AddShedViewController = segue.destinationViewController as! AddShedViewController
             
             addShedVC.mainVC = self.mainVC
+            
+        } else if segue.identifier == "showSaveShed" {
+            
+            let propertiesVC: SaveShedViewController = segue.destinationViewController as! SaveShedViewController
+            
+            propertiesVC.mainVC = self.mainVC
             
         }
     }

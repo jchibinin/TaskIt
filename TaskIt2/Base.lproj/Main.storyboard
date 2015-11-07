@@ -174,6 +174,7 @@
                         <outlet property="dueDate" destination="dNy-LW-rxJ" id="hua-5I-NrX"/>
                         <outlet property="segmentControl" destination="5Gr-yE-wNQ" id="inY-Af-P8m"/>
                         <segue destination="c4B-DI-4Zg" kind="presentation" identifier="showAddShed" id="tm8-1i-g4e"/>
+                        <segue destination="zEI-8r-cy7" kind="presentation" identifier="showSaveShed" id="0uQ-HG-gUV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cyl-kZ-XGH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -225,6 +226,53 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="24x-oc-UzF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="407" y="1845"/>
+        </scene>
+        <!--Save Shed View Controller-->
+        <scene sceneID="UgX-UA-Ueg">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nzf-SV-v7u" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="zEI-8r-cy7" customClass="SaveShedViewController" customModule="TaskIt2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4OA-uR-XmZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="0ib-Zq-yeq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LKe-f9-mJL">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1rO-JH-sah">
+                                <rect key="frame" x="11" y="20" width="59" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelButtonTapped:" destination="zEI-8r-cy7" eventType="touchUpInside" id="mo3-RU-ITd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MEu-vj-iBd">
+                                <rect key="frame" x="261" y="20" width="46" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="doneButtonTapped:" destination="zEI-8r-cy7" eventType="touchUpInside" id="j2B-am-KDi"/>
+                                </connections>
+                            </button>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aYn-9D-Fz3">
+                                <rect key="frame" x="11" y="58" width="299" height="216"/>
+                                <animations/>
+                                <connections>
+                                    <outlet property="dataSource" destination="zEI-8r-cy7" id="Cec-Kv-1QE"/>
+                                </connections>
+                            </pickerView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="pickerView" destination="aYn-9D-Fz3" id="WSR-WH-vki"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1056" y="1845"/>
         </scene>
         <!--Add Task View Controller-->
         <scene sceneID="5ir-sP-qOn">
