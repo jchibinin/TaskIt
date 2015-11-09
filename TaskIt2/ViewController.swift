@@ -41,11 +41,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         taskArray = [task1, task2, TaskModel(task: "Утренние процедуры", date: date3)]
         
-        ////
         from = true
-        let shed1 = ShedModel(shedName: "Morning", taskArray: taskArray)
-        shedArray.append(shed1)
-        //
+       
         timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("myHandler"), userInfo: nil, repeats: true)
         
         self.tableView.reloadData()
@@ -69,18 +66,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
          timeBegin = timeEnd.dateByAddingTimeInterval(-Double(tasksSeconds))
         }
         
+        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("myHandler"), userInfo: nil, repeats: true)
         
         self.tableView.reloadData()
-        
-        if timer.valid == false{
-            timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("myHandler"), userInfo: nil, repeats: true)
-        }
+
     }
     
     //timer
     func myHandler() {
        
-        if editButton.tag == 100 {
+    
         
         var tasksSeconds:Int = 0
         var taskSeconds:Int = 0
@@ -115,18 +110,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                     cell.descriptionLabel.text = cellText
 
             } else {
-                
-                let indexPath: NSIndexPath = NSIndexPath(forItem: index, inSection: 0)
-                let cell: TaskCell = tableView.cellForRowAtIndexPath(indexPath) as! TaskCell
-               // if cell.descriptionLabel.text != "" {
-                    cell.descriptionLabel.text = ""
-               // }
+       
+                // kosyak?
+            
+              // if self.tableView.isAccessibilityElement {
+             //   let indexPath: NSIndexPath = NSIndexPath(forItem: index, inSection: 0)
+             //   let emtyCell: TaskCell = self.tableView.cellForRowAtIndexPath(indexPath) as! TaskCell
+            //        emtyCell.descriptionLabel.text = ""
+             //  }
+              
             }
             
             tasksSeconds = tasksSeconds + taskSeconds
             index = index+1
         }
-        }
+   
                 
     }
     
@@ -166,7 +164,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBAction func propetiesButtonTapped(sender: UIBarButtonItem) {
         
         self.performSegueWithIdentifier("showProperties", sender: self)
-        
+        timer.invalidate()
     }
     
     @IBAction func addButtonTapped(sender: UIBarButtonItem) {
@@ -260,6 +258,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             
             self.taskArray.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            self.viewDidAppear(true)
         }
         
         let editAction = UITableViewRowAction(style: .Normal, title: "Edit") {action in
@@ -281,12 +280,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             self.tableView?.setEditing(true, animated: true)
             self.editButton!.tag = 200
             self.editButton.title = "Done"
+          //  timer.invalidate()
         }
         else
         {
             self.tableView?.setEditing(false, animated: true)
             self.editButton!.tag = 100
             self.editButton.title = "Edit"
+          //  timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("myHandler"), userInfo: nil, repeats: true)
         }
     }
     
@@ -300,7 +301,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         taskArray.insert(taskArray.removeAtIndex(sourceIndexPath.row), atIndex: destinationIndexPath.row)
         self.tableView?.moveRowAtIndexPath(sourceIndexPath, toIndexPath: destinationIndexPath)
-        
+        self.tableView.reloadData()
         tableView.endUpdates()
         
         

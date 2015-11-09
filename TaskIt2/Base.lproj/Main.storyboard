@@ -144,25 +144,28 @@
                                     <!--2015-11-02 19:21:45 +0000-->
                                 </date>
                             </datePicker>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EJB-lD-hSa">
-                                <rect key="frame" x="16" y="263" width="292" height="30"/>
-                                <animations/>
-                                <state key="normal" title="New shedule"/>
-                                <connections>
-                                    <action selector="newSheduleTapped:" destination="97I-Bd-oxQ" eventType="touchUpInside" id="PUe-z3-6dJ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tJW-xo-K6k">
-                                <rect key="frame" x="16" y="319" width="292" height="30"/>
-                                <animations/>
-                                <state key="normal" title="Load shedule"/>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="myR-IX-dYn">
                                 <rect key="frame" x="16" y="291" width="292" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Save shedule"/>
                                 <connections>
                                     <action selector="saveSheduleTapped:" destination="97I-Bd-oxQ" eventType="touchUpInside" id="uY6-sW-QFx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tJW-xo-K6k">
+                                <rect key="frame" x="16" y="319" width="292" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Load shedule"/>
+                                <connections>
+                                    <action selector="loadSheduleTapped:" destination="97I-Bd-oxQ" eventType="touchUpInside" id="aHY-wx-DWi"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EJB-lD-hSa">
+                                <rect key="frame" x="16" y="263" width="292" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Clear shedule"/>
+                                <connections>
+                                    <action selector="newSheduleTapped:" destination="97I-Bd-oxQ" eventType="touchUpInside" id="PUe-z3-6dJ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -175,6 +178,7 @@
                         <outlet property="segmentControl" destination="5Gr-yE-wNQ" id="inY-Af-P8m"/>
                         <segue destination="c4B-DI-4Zg" kind="presentation" identifier="showAddShed" id="tm8-1i-g4e"/>
                         <segue destination="zEI-8r-cy7" kind="presentation" identifier="showSaveShed" id="0uQ-HG-gUV"/>
+                        <segue destination="mKO-KJ-Srn" kind="presentation" identifier="showOpenShed" id="ZfJ-Qg-bVE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cyl-kZ-XGH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -201,20 +205,20 @@
                                     <action selector="cancelTapped:" destination="c4B-DI-4Zg" eventType="touchUpInside" id="O3O-6j-BDb"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hod-sE-P8R">
-                                <rect key="frame" x="252" y="20" width="46" height="30"/>
-                                <animations/>
-                                <state key="normal" title="Done"/>
-                                <connections>
-                                    <action selector="doneTapped:" destination="c4B-DI-4Zg" eventType="touchUpInside" id="b83-1z-W4t"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter name of shedule" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W9y-ZJ-IHP">
                                 <rect key="frame" x="20" y="64" width="278" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hod-sE-P8R">
+                                <rect key="frame" x="205" y="20" width="93" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Add shedule"/>
+                                <connections>
+                                    <action selector="doneTapped:" destination="c4B-DI-4Zg" eventType="touchUpInside" id="b83-1z-W4t"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -230,7 +234,6 @@
         <!--Save Shed View Controller-->
         <scene sceneID="UgX-UA-Ueg">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nzf-SV-v7u" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="zEI-8r-cy7" customClass="SaveShedViewController" customModule="TaskIt2" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4OA-uR-XmZ"/>
@@ -249,7 +252,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MEu-vj-iBd">
-                                <rect key="frame" x="261" y="20" width="46" height="30"/>
+                                <rect key="frame" x="264" y="20" width="46" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Done"/>
                                 <connections>
@@ -257,10 +260,10 @@
                                 </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aYn-9D-Fz3">
-                                <rect key="frame" x="11" y="58" width="299" height="216"/>
+                                <rect key="frame" x="11" y="58" width="299" height="129"/>
                                 <animations/>
                                 <connections>
-                                    <outlet property="dataSource" destination="zEI-8r-cy7" id="Cec-Kv-1QE"/>
+                                    <outlet property="delegate" destination="zEI-8r-cy7" id="wTg-AJ-EFc"/>
                                 </connections>
                             </pickerView>
                         </subviews>
@@ -268,11 +271,94 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="pickerView" destination="aYn-9D-Fz3" id="WSR-WH-vki"/>
+                        <outlet property="pickerView" destination="aYn-9D-Fz3" id="9kV-MS-Zuv"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nzf-SV-v7u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1056" y="1845"/>
+        </scene>
+        <!--Open Shed View Controller-->
+        <scene sceneID="7gd-c3-Hbk">
+            <objects>
+                <viewController id="mKO-KJ-Srn" customClass="OpenShedViewController" customModule="TaskIt2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qcF-LL-2Kn"/>
+                        <viewControllerLayoutGuide type="bottom" id="bbQ-97-JqU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GtH-wB-XHf">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EMc-8e-L9e">
+                                <rect key="frame" x="14" y="20" width="61" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelButtonTapped:" destination="mKO-KJ-Srn" eventType="touchUpInside" id="ruY-Uj-WVP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fuu-bV-f4W">
+                                <rect key="frame" x="263" y="20" width="46" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="doneButtonTapped:" destination="mKO-KJ-Srn" eventType="touchUpInside" id="WCn-7K-o5H"/>
+                                </connections>
+                            </button>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="APz-ex-1da">
+                                <rect key="frame" x="14" y="53" width="303" height="129"/>
+                                <animations/>
+                                <connections>
+                                    <outlet property="delegate" destination="mKO-KJ-Srn" id="GR9-uw-HUL"/>
+                                </connections>
+                            </pickerView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uVF-XC-bwj">
+                                <rect key="frame" x="14" y="202" width="303" height="390"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" id="8IJ-iZ-kac">
+                                        <rect key="frame" x="0.0" y="28" width="303" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8IJ-iZ-kac" id="p92-y1-of9">
+                                            <rect key="frame" x="0.0" y="0.0" width="303" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="dateLabel" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPr-yQ-kxt">
+                                                    <rect key="frame" x="219" y="14" width="64" height="21"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="taskLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UdC-td-3tp">
+                                                    <rect key="frame" x="21" y="14" width="138" height="21"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <animations/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="V7m-HJ-OUJ"/>
+                    <connections>
+                        <outlet property="pickerView" destination="APz-ex-1da" id="WU8-Gl-iv6"/>
+                        <outlet property="tableView" destination="uVF-XC-bwj" id="DGO-BJ-5dd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T6f-gN-PpP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1718" y="1843"/>
         </scene>
         <!--Add Task View Controller-->
         <scene sceneID="5ir-sP-qOn">

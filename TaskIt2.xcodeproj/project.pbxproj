@@ -19,6 +19,7 @@
 		662CEE211BD423310051D4DA /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662CEE201BD423310051D4DA /* TaskCell.swift */; };
 		6640A4691BECCCA3003718D5 /* ShedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6640A4681BECCCA3003718D5 /* ShedModel.swift */; };
 		6640A46F1BED4E94003718D5 /* AddShedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6640A46E1BED4E94003718D5 /* AddShedViewController.swift */; };
+		665294171BEFA7C500A16D6D /* OpenShedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665294161BEFA7C500A16D6D /* OpenShedViewController.swift */; };
 		66592B371BD96AD400A6AF7F /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66592B361BD96AD400A6AF7F /* Date.swift */; };
 		665C61A71BEE6DEC00F4ABA6 /* SaveShedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665C61A61BEE6DEC00F4ABA6 /* SaveShedViewController.swift */; };
 		66CF43021BD58A3100A6B56D /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CF43011BD58A3100A6B56D /* TaskModel.swift */; };
@@ -62,6 +63,7 @@
 		662CEE201BD423310051D4DA /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskCell.swift; path = ../TaskCell.swift; sourceTree = "<group>"; };
 		6640A4681BECCCA3003718D5 /* ShedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShedModel.swift; sourceTree = "<group>"; };
 		6640A46E1BED4E94003718D5 /* AddShedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddShedViewController.swift; sourceTree = "<group>"; };
+		665294161BEFA7C500A16D6D /* OpenShedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenShedViewController.swift; sourceTree = "<group>"; };
 		66592B361BD96AD400A6AF7F /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		665C61A61BEE6DEC00F4ABA6 /* SaveShedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveShedViewController.swift; sourceTree = "<group>"; };
 		66CF43011BD58A3100A6B56D /* TaskModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskModel.swift; path = ../TaskModel.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				662CEDB31BD3E2A70051D4DA /* AppDelegate.swift */,
 				662CEDB51BD3E2A70051D4DA /* ViewController.swift */,
 				662CEDB71BD3E2A70051D4DA /* Main.storyboard */,
+				665294161BEFA7C500A16D6D /* OpenShedViewController.swift */,
 				665C61A61BEE6DEC00F4ABA6 /* SaveShedViewController.swift */,
 				66045BBF1BE7EF2100F63E42 /* PropertiesViewController.swift */,
 				6640A46E1BED4E94003718D5 /* AddShedViewController.swift */,
@@ -290,6 +293,7 @@
 				6640A46F1BED4E94003718D5 /* AddShedViewController.swift in Sources */,
 				662CEE211BD423310051D4DA /* TaskCell.swift in Sources */,
 				66592B371BD96AD400A6AF7F /* Date.swift in Sources */,
+				665294171BEFA7C500A16D6D /* OpenShedViewController.swift in Sources */,
 				665C61A71BEE6DEC00F4ABA6 /* SaveShedViewController.swift in Sources */,
 				662CEDB61BD3E2A70051D4DA /* ViewController.swift in Sources */,
 				66CF43021BD58A3100A6B56D /* TaskModel.swift in Sources */,

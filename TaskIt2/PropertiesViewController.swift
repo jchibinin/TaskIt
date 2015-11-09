@@ -57,6 +57,7 @@ class PropertiesViewController: UIViewController {
         default:
             break; 
         }
+       
         
         self.dismissViewControllerAnimated(true, completion: nil)
         
@@ -100,6 +101,12 @@ class PropertiesViewController: UIViewController {
         
     }
     
+    @IBAction func loadSheduleTapped(sender: UIButton) {
+    
+        self.performSegueWithIdentifier("showOpenShed", sender: self)
+       
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "showAddShed" {
@@ -113,6 +120,13 @@ class PropertiesViewController: UIViewController {
             let propertiesVC: SaveShedViewController = segue.destinationViewController as! SaveShedViewController
             
             propertiesVC.mainVC = self.mainVC
+            
+        } else if segue.identifier == "showOpenShed" {
+            
+            
+            let loadVC: OpenShedViewController = segue.destinationViewController as! OpenShedViewController
+            
+            loadVC.mainVC = self.mainVC
             
         }
     }
