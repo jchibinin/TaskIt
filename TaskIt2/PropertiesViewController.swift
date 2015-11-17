@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class PropertiesViewController: UIViewController {
 
@@ -64,8 +65,34 @@ class PropertiesViewController: UIViewController {
     }
     //shedule actions
     @IBAction func newSheduleTapped(sender: UIButton) {
-        mainVC.taskArray.removeAll()
-    }
+        
+        if let managedObjectContext = (UIApplication.sharedApplication().delegate
+            as? AppDelegate)?.managedObjectContext {
+                ///clear all
+                //////////////
+                let predicate = NSPredicate(format: "schedule == %@", "")
+                
+                let fetchRequest = NSFetchRequest(entityName: "TaskModel")
+                fetchRequest.predicate = predicate
+                
+                do {
+                    let fetchedEntities = try managedObjectContext.executeFetchRequest(fetchRequest) as! [TaskModel]
+                    
+                    for entity in fetchedEntities {
+                        managedObjectContext.deleteObject(entity)
+                    }
+                } catch {
+                    // Do something in response to error condition
+                }
+                
+                do {
+                    try managedObjectContext.save()
+                } catch {
+                    // Do something in response to error condition
+                }
+                ///////////////
+               
+        }    }
     
     
     @IBAction func saveSheduleTapped(sender: AnyObject) {

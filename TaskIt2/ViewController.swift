@@ -7,23 +7,34 @@
 //
 
 import UIKit
+import CoreData
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
 
    
     @IBOutlet weak var tableView: UITableView!
     
+    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
+    
+    
+    //timers
     var timeBegin: NSDate = NSDate.init()
     var timeEnd: NSDate = NSDate.init()
-    var from: Bool = Bool.init()
-    
-    var taskArray:[TaskModel]=[]
-    var shedArray:[ShedModel]=[]
-    var currentShed: ShedModel = ShedModel(shedName: "", taskArray: [])
+    var from: Bool = true
     var currentIndexPath: NSIndexPath = NSIndexPath.init()
     var timer: NSTimer = NSTimer.init()
-    
     var activeTask: Int = 0
+    
+    var isMovingItem: Bool = false
+    
+    //task array
+    var taskArray:[TaskModel]=[]
+    
+    // shedules
+    var shedArray:[ShedModel]=[]
+    var currentShed: ShedModel = ShedModel(shedName: "", taskArray: [])
+    
     
     @IBOutlet weak var editButton: UIBarButtonItem!
     
@@ -31,21 +42,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        fetchedResultController = getFetchedResultsController()
+        fetchedResultController.delegate = self
         
-        let date1 = Date.from("00:23")
-        let date2 = Date.from("00:10")
-        let date3 = Date.from("00:15")
-        
-        let task1 = TaskModel(task: "Дорога на работу", date: date1)
-        let task2 = TaskModel(task: "Еда", date: date2)
-        
-        taskArray = [task1, task2, TaskModel(task: "Утренние процедуры", date: date3)]
-        
-        from = true
-       
-        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("myHandler"), userInfo: nil, repeats: true)
-        
-        self.tableView.reloadData()
+        do {
+            try fetchedResultController.performFetch()
+        } catch _ {
+        }
         
     }
 
@@ -55,27 +58,25 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         //compute second date
        
         var tasksSeconds:Int = 0
-        
+        /*
         for task in taskArray {
-            tasksSeconds = tasksSeconds + Date.toIntSec(date: task.date)
+            tasksSeconds = tasksSeconds + Date.toIntSec(date: task.date!)
             }
-        
+        */
         if from {
          timeEnd = timeBegin.dateByAddingTimeInterval(Double(tasksSeconds))
         }else{
          timeBegin = timeEnd.dateByAddingTimeInterval(-Double(tasksSeconds))
         }
         
-        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("myHandler"), userInfo: nil, repeats: true)
+      //  timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("myHandler"), userInfo: nil, repeats: true)
         
-        self.tableView.reloadData()
-
     }
     
     //timer
     func myHandler() {
        
-    
+     /*
         
         var tasksSeconds:Int = 0
         var taskSeconds:Int = 0
@@ -90,7 +91,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         for task in taskArray {
             timeEndTask = timeEnd.dateByAddingTimeInterval(-Double(tasksSeconds))
-            taskSeconds = Date.toIntSec(date: task.date)
+            taskSeconds = Date.toIntSec(date: task.date!)
             timeBeginTask = timeEnd.dateByAddingTimeInterval(-Double(tasksSeconds+taskSeconds))
             dateComparisionResultEnd = currentTime.compare(timeEndTask)
             dateComparisionResultBegin = currentTime.compare(timeBeginTask)
@@ -101,7 +102,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 activeTask = index
                 //skolko sek ostalos
                 //time end task - current time
-                secsToEndTask = Date.toIntSec(date: task.date) - Int(NSDate().timeIntervalSinceDate(timeBeginTask))
+                secsToEndTask = Date.toIntSec(date: task.date!) - Int(NSDate().timeIntervalSinceDate(timeBeginTask))
                 let minutes = Int(secsToEndTask/60)
                 let cellText = String(format:"%d:%02d", minutes, secsToEndTask - minutes*60)
                ///update cell
@@ -124,7 +125,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             tasksSeconds = tasksSeconds + taskSeconds
             index = index+1
         }
-   
+   */
                 
     }
     
@@ -139,23 +140,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
          if segue.identifier == "showTaskDetail" {
             
             let detailVC: TaskDetailViewController = segue.destinationViewController as! TaskDetailViewController
-            
             let indexPath = currentIndexPath //self.tableView.indexPathForSelectedRow!
-            let thisTask = taskArray[indexPath.row]
+            let thisTask = fetchedResultController.objectAtIndexPath(indexPath) as! TaskModel
             
             detailVC.detailTaskModel = thisTask
-            detailVC.mainVC = self
+          //  detailVC.mainVC = self
          }
          else if segue.identifier == "showTaskAdd" {
             
             let addTaskVC: AddTaskViewController = segue.destinationViewController as! AddTaskViewController
             
-            addTaskVC.mainVC = self
             
          } else if segue.identifier == "showProperties" {
             
             let propertiesVC: PropertiesViewController = segue.destinationViewController as! PropertiesViewController
-            
             propertiesVC.mainVC = self
             
          }         
@@ -173,30 +171,30 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         timer.invalidate()
     }
     
+    //UITableViewDataSource
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         
-        return 1
+      return fetchedResultController.sections!.count
+        
     }
     
     
-    //UITableViewDataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return taskArray.count
+        return fetchedResultController.sections![section].numberOfObjects
     
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let thisTask = taskArray[indexPath.row]
+        let thisTask = fetchedResultController.objectAtIndexPath(indexPath) as! TaskModel
         
         let cell: TaskCell = tableView.dequeueReusableCellWithIdentifier("myCell", forIndexPath: indexPath) as! TaskCell
         
         cell.taskLabel.text = thisTask.task
         cell.descriptionLabel.text = ""
-        cell.dateLabel.text = Date.toString(date: thisTask.date)
+        cell.dateLabel.text = Date.toString(date: thisTask.date!)
         
-       // cell.showsReorderControl = true
         
         return cell
     }
@@ -238,8 +236,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return title
     
     }
-
-    
     
     //UITableViewDelegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -252,14 +248,27 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
     }
     
+    ///edit delete
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         
-        let deleteAction = UITableViewRowAction(style: .Default, title: "Delete") {action in
-            
-            self.taskArray.removeAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-            self.viewDidAppear(true)
-        }
+        let deleteAction = UITableViewRowAction(style:
+            UITableViewRowActionStyle.Default, title: "Delete",handler: { (action,
+                indexPath) -> Void in
+                // Delete the row from the database
+                if let managedObjectContext = (UIApplication.sharedApplication().delegate
+                    as? AppDelegate)?.managedObjectContext {
+                        let itemToDelete =
+                        self.fetchedResultController.objectAtIndexPath(indexPath) as! TaskModel
+                        managedObjectContext.deleteObject(itemToDelete)
+                        do {
+                            try managedObjectContext.save()
+                            tableView.reloadData()
+                        } catch {
+                            print(error)
+                        }
+                }
+               
+        })
         
         let editAction = UITableViewRowAction(style: .Normal, title: "Edit") {action in
             
@@ -270,6 +279,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         return [deleteAction, editAction]
     }
+    
     
     ///////////// mooving
     
@@ -296,15 +306,74 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
-       
-        tableView.beginUpdates()
         
-        taskArray.insert(taskArray.removeAtIndex(sourceIndexPath.row), atIndex: destinationIndexPath.row)
-        self.tableView?.moveRowAtIndexPath(sourceIndexPath, toIndexPath: destinationIndexPath)
-        self.tableView.reloadData()
-        tableView.endUpdates()
+        self.tableView.beginUpdates()
         
+        if var todos = self.fetchedResultController.fetchedObjects {
+            let todo = todos[sourceIndexPath.row] as! TaskModel
+            todos.removeAtIndex(sourceIndexPath.row)
+            todos.insert(todo, atIndex: destinationIndexPath.row)
+            
+            var idx : Int32 = Int32(todos.count)
+            for todo in todos as! [TaskModel] {
+                todo.order = idx--
+            }
+            
+            
+            saveContext()
+        }
+        
+       dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                tableView.reloadRowsAtIndexPaths(tableView.indexPathsForVisibleRows!, withRowAnimation: UITableViewRowAnimation.Fade)
+        })
+            
+        
+        self.tableView.endUpdates()
+    
+        
+
         
     }
-   }
+    
+    ///helper
+    
+    func taskFetchRequest() -> NSFetchRequest {
+        let fetchRequest = NSFetchRequest(entityName: "TaskModel")
+        let sortDecriptor = NSSortDescriptor(key: "order", ascending: true)
+        let predicate = NSPredicate(format: "schedule == %@", "")
+        fetchRequest.predicate = predicate
+        fetchRequest.sortDescriptors = [sortDecriptor]
+        return fetchRequest
+    }
+    
+    func getFetchedResultsController() -> NSFetchedResultsController {
+       
+        fetchedResultController = NSFetchedResultsController(fetchRequest: taskFetchRequest(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        return fetchedResultController
+    }
+    
+   
 
+func saveContext() {
+    
+   // let context = getFetchedResultsController() .managedObjectContext
+    let context = self.fetchedResultController.managedObjectContext
+   
+    do {
+        try context.save()
+
+        } catch let error as NSError {
+        // failure
+        print("Save failed: \(error.localizedDescription)")
+    }
+    
+}
+    
+   func controllerDidChangeContent(controller: NSFetchedResultsController)
+   {
+    
+    tableView.reloadData()
+    
+}
+
+}

@@ -82,7 +82,7 @@ class OpenShedViewController: UIViewController {
         let cell: TaskCell = tableView.dequeueReusableCellWithIdentifier("myCell", forIndexPath: indexPath) as! TaskCell
         
         cell.taskLabel.text = thisTask.task
-        cell.dateLabel.text = Date.toString(date: thisTask.date)
+        cell.dateLabel.text = Date.toString(date: thisTask.date!)
         
         // cell.showsReorderControl = true
         

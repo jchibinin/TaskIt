@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import CoreData
 
 class AddTaskViewController: UIViewController {
 
-    var mainVC: ViewController!
+    //var mainVC: ViewController!
     
     @IBOutlet weak var taskTextField: UITextField!
    // @IBOutlet weak var subtaskTextField: UITextField!
@@ -33,8 +34,35 @@ class AddTaskViewController: UIViewController {
 
     @IBAction func addTaskButtonTapped(sender: UIButton) {
        
-        var task = TaskModel(task: taskTextField.text!, date: dueDatePicker.date)
-        mainVC.taskArray.append(task)
+       // var task = TaskModel(task: taskTextField.text!, date: dueDatePicker.date)
+       // mainVC.taskArray.append(task)
+        let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        
+        let managedObjectContext = appDelegate.managedObjectContext
+        
+        let entityDescription = NSEntityDescription.entityForName("TaskModel", inManagedObjectContext: managedObjectContext)
+        
+        let task = TaskModel(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext)
+        
+        task.task = taskTextField.text!
+        task.date = dueDatePicker.date
+        task.order = task.lastMaxPosition() + 1
+        task.schedule = ""
+        
+        appDelegate.saveContext()
+        
+        var request = NSFetchRequest(entityName: "TaskModel")
+        
+        do {
+        let results: NSArray = try managedObjectContext.executeFetchRequest(request)
+        
+        for res in results {
+            print(res)
+        }
+        } catch let error as NSError {
+            // failure
+            print("Fetch failed: \(error.localizedDescription)")
+        }
         
         self.dismissViewControllerAnimated(true, completion: nil)
         
