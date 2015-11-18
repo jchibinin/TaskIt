@@ -140,20 +140,20 @@ class PropertiesViewController: UIViewController {
             
             let addShedVC: AddShedViewController = segue.destinationViewController as! AddShedViewController
             
-            addShedVC.mainVC = self.mainVC
+        
             
         } else if segue.identifier == "showSaveShed" {
             
             let propertiesVC: SaveShedViewController = segue.destinationViewController as! SaveShedViewController
             
-            propertiesVC.mainVC = self.mainVC
+           
             
         } else if segue.identifier == "showOpenShed" {
             
             
             let loadVC: OpenShedViewController = segue.destinationViewController as! OpenShedViewController
             
-            loadVC.mainVC = self.mainVC
+            
             
         }
     }

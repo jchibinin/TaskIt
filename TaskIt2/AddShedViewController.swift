@@ -7,10 +7,10 @@
 //
 
 import UIKit
+import CoreData
 
 class AddShedViewController: UIViewController {
 
-    var mainVC: ViewController!
   
     @IBOutlet weak var nameShed: UITextField!
     
@@ -33,9 +33,42 @@ class AddShedViewController: UIViewController {
 
     @IBAction func doneTapped(sender: UIButton) {
         
-        let shed1 = ShedModel(shedName: nameShed.text!, taskArray: mainVC.taskArray)
-        mainVC.shedArray.append(shed1)
-        mainVC.currentShed = shed1
+        if let managedObjectContext = (UIApplication.sharedApplication().delegate
+            as? AppDelegate)?.managedObjectContext {
+                ///add new 
+                //////////////
+                let predicate = NSPredicate(format: "schedule == %@", "")
+                
+                let fetchRequest = NSFetchRequest(entityName: "TaskModel")
+                fetchRequest.predicate = predicate
+                
+                do {
+                    let fetchedEntities = try managedObjectContext.executeFetchRequest(fetchRequest) as! [TaskModel]
+                    
+                    for entity in fetchedEntities {
+                    
+                        let entityDescription = NSEntityDescription.entityForName("TaskModel", inManagedObjectContext: managedObjectContext)
+    
+                        let task = TaskModel(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext)
+                    
+                        task.task     = entity.task
+                        task.date     = entity.date
+                        task.order    = entity.order
+                        task.schedule = nameShed.text
+                        
+                    }
+                } catch {
+                    // Do something in response to error condition
+                }
+                
+                do {
+                    try managedObjectContext.save()
+                } catch let error as NSError {
+                    print("Save failed: \(error.localizedDescription)")
+                }
+                
+        }
+        
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     /*
