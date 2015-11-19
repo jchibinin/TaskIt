@@ -7,20 +7,44 @@
 //
 
 import UIKit
+import CoreData
 
 class OpenShedViewController: UIViewController {
 
-    var mainVC: ViewController!
     var shedText: String = ""
-    var taskArray: [TaskModel]=[]
+    var shedArray: [String]=[]
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var sheduleLabelText: UILabel!
+    
     @IBOutlet weak var pickerView: UIPickerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-   //    pickerView.dataSource = self
-   //    pickerView.delegate = self
+        
+        let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        
+        //get schedule array
+        let managedObjectContext = appDelegate.managedObjectContext
+        var request = NSFetchRequest(entityName: "TaskModel")
+        request.returnsObjectsAsFaults = false
+        
+        do {
+            let results: NSArray = try managedObjectContext.executeFetchRequest(request)
+            
+            for res in results {
+                var schedule = res.valueForKey("schedule") as! String
+                if !shedArray.contains(schedule) && schedule != ""
+                {
+                    shedArray.append(schedule)
+                   
+                }
+            }
+        } catch let error as NSError {
+            // failure
+            print("Fetch failed: \(error.localizedDescription)")
+        }
+        
+        
         // Do any additional setup after loading the view.
     }
 
@@ -31,24 +55,79 @@ class OpenShedViewController: UIViewController {
     
    
     @IBAction func cancelButtonTapped(sender: UIButton) {
+        
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     
     @IBAction func doneButtonTapped(sender: UIButton) {
+     
+        //clearing
         
-       // var index: Int = 0
-        for shed in mainVC.shedArray {
-            
-            if shed.shedName == shedText {
+        if let managedObjectContext = (UIApplication.sharedApplication().delegate
+            as? AppDelegate)?.managedObjectContext {
+                ///clear all
+                //////////////
+                var predicate = NSPredicate(format: "schedule == %@", "")
                 
-                mainVC.taskArray.removeAll()
-                mainVC.taskArray.appendContentsOf(shed.taskArray)
+                var fetchRequest = NSFetchRequest(entityName: "TaskModel")
+                fetchRequest.predicate = predicate
                 
-            }
-       //     index++
+                do {
+                    let fetchedEntities = try managedObjectContext.executeFetchRequest(fetchRequest) as! [TaskModel]
+                    
+                    for entity in fetchedEntities {
+                        managedObjectContext.deleteObject(entity)
+                    }
+                } catch {
+                    // Do something in response to error condition
+                }
+                
+                do {
+                    try managedObjectContext.save()
+                } catch {
+                    // Do something in response to error condition
+                }
+               
+                ///add in new
+                //////////////
+                predicate = NSPredicate(format: "schedule == %@", shedText)
+                
+                fetchRequest = NSFetchRequest(entityName: "TaskModel")
+                fetchRequest.predicate = predicate
+                
+                do {
+                    let fetchedEntities = try managedObjectContext.executeFetchRequest(fetchRequest) as! [TaskModel]
+                    
+                    for entity in fetchedEntities {
+                        
+                        let entityDescription = NSEntityDescription.entityForName("TaskModel", inManagedObjectContext: managedObjectContext)
+                        
+                        let task = TaskModel(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext)
+                        
+                        task.task     = entity.task
+                        task.date     = entity.date
+                        task.order    = entity.order
+                        task.schedule = ""
+                        
+                    }
+                } catch {
+                    // Do something in response to error condition
+                }
+                
+                do {
+                    try managedObjectContext.save()
+                } catch let error as NSError {
+                    print("Save failed: \(error.localizedDescription)")
+                }
+                
+                
+                
         }
+        
+        
         self.dismissViewControllerAnimated(true, completion: nil)
+       
     }
 
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
@@ -56,37 +135,16 @@ class OpenShedViewController: UIViewController {
     }
     
    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return mainVC.shedArray.count
+        return shedArray.count
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return mainVC.shedArray[row].shedName
+        return shedArray[row]
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        shedText = mainVC.shedArray[row].shedName
-        taskArray = mainVC.shedArray[row].taskArray
-    }
-
-    ////table view
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return taskArray.count
-        
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        let thisTask = taskArray[indexPath.row]
-        
-        let cell: TaskCell = tableView.dequeueReusableCellWithIdentifier("myCell", forIndexPath: indexPath) as! TaskCell
-        
-        cell.taskLabel.text = thisTask.task
-        cell.dateLabel.text = Date.toString(date: thisTask.date!)
-        
-        // cell.showsReorderControl = true
-        
-        return cell
+        shedText = shedArray[row]
+        sheduleLabelText.text = shedText
     }
 
     

@@ -307,45 +307,19 @@
                                 </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="APz-ex-1da">
-                                <rect key="frame" x="14" y="53" width="303" height="129"/>
+                                <rect key="frame" x="14" y="81" width="303" height="129"/>
                                 <animations/>
                                 <connections>
                                     <outlet property="delegate" destination="mKO-KJ-Srn" id="GR9-uw-HUL"/>
                                 </connections>
                             </pickerView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uVF-XC-bwj">
-                                <rect key="frame" x="14" y="202" width="303" height="390"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose schedule to load.." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yiM-Zi-vWe">
+                                <rect key="frame" x="20" y="52" width="297" height="21"/>
                                 <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" id="8IJ-iZ-kac">
-                                        <rect key="frame" x="0.0" y="28" width="303" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8IJ-iZ-kac" id="p92-y1-of9">
-                                            <rect key="frame" x="0.0" y="0.0" width="303" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="dateLabel" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPr-yQ-kxt">
-                                                    <rect key="frame" x="219" y="14" width="64" height="21"/>
-                                                    <animations/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="taskLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UdC-td-3tp">
-                                                    <rect key="frame" x="21" y="14" width="138" height="21"/>
-                                                    <animations/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <animations/>
-                                        </tableViewCellContentView>
-                                        <animations/>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -353,7 +327,7 @@
                     <navigationItem key="navigationItem" id="V7m-HJ-OUJ"/>
                     <connections>
                         <outlet property="pickerView" destination="APz-ex-1da" id="WU8-Gl-iv6"/>
-                        <outlet property="tableView" destination="uVF-XC-bwj" id="DGO-BJ-5dd"/>
+                        <outlet property="sheduleLabelText" destination="yiM-Zi-vWe" id="Mk7-Km-2oF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T6f-gN-PpP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -379,7 +353,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iU2-do-iU6">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" semanticContentAttribute="playback" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iU2-do-iU6">
                                 <rect key="frame" x="20" y="103" width="285" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -408,11 +382,11 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="qFN-Ob-zTT">
-                                <rect key="frame" x="19" y="175" width="286" height="120"/>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="zIC-KJ-S1D">
+                                <rect key="frame" x="20" y="175" width="285" height="130"/>
                                 <animations/>
-                                <date key="date" timeIntervalSinceReferenceDate="467496150.03478003">
-                                    <!--2015-10-25 20:02:30 +0000-->
+                                <date key="date" timeIntervalSinceReferenceDate="469648286.800484">
+                                    <!--2015-11-19 17:51:26 +0000-->
                                 </date>
                             </datePicker>
                         </subviews>
@@ -420,7 +394,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="dueDatePicker" destination="qFN-Ob-zTT" id="EvU-YD-31b"/>
+                        <outlet property="dueDatePicker" destination="zIC-KJ-S1D" id="JuW-Ay-qhx"/>
                         <outlet property="taskTextField" destination="iU2-do-iU6" id="uue-E4-7yc"/>
                     </connections>
                 </viewController>
