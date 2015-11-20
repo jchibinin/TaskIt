@@ -7,19 +7,44 @@
 //
 
 import UIKit
+import CoreData
 
 class SaveShedViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    var mainVC: ViewController!
+    var shedArray: [String] = []
     var shedText: String = ""
     
+    @IBOutlet weak var schedudeTextLabel: UILabel!
 
     @IBOutlet weak var pickerView: UIPickerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        pickerView.dataSource = self
-        pickerView.delegate = self
+        
+        let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        //get schedule array
+        let managedObjectContext = appDelegate.managedObjectContext
+        var request = NSFetchRequest(entityName: "TaskModel")
+        request.returnsObjectsAsFaults = false
+        
+        do {
+            let results: NSArray = try managedObjectContext.executeFetchRequest(request)
+            
+            for res in results {
+                var schedule = res.valueForKey("schedule") as! String
+                if !shedArray.contains(schedule) && schedule != ""
+                {
+                    shedArray.append(schedule)
+                    
+                }
+            }
+        } catch let error as NSError {
+            // failure
+            print("Fetch failed: \(error.localizedDescription)")
+        }
+        
+      //  pickerView.dataSource = self
+      //  pickerView.delegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -34,19 +59,68 @@ class SaveShedViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }
 
     @IBAction func doneButtonTapped(sender: UIButton) {
-        var index: Int = 0
-        for shed in mainVC.shedArray {
-            if shed.shedName == shedText {
+        
+        //clearing
+        
+        if let managedObjectContext = (UIApplication.sharedApplication().delegate
+            as? AppDelegate)?.managedObjectContext {
+                ///clear prev
+                //////////////
+                var predicate = NSPredicate(format: "schedule == %@", shedText)
                 
-                mainVC.shedArray.removeAtIndex(index)
+                var fetchRequest = NSFetchRequest(entityName: "TaskModel")
+                fetchRequest.predicate = predicate
                 
-                var newShed: ShedModel = ShedModel(shedName: "", taskArray: [])
-                newShed.taskArray = mainVC.taskArray
-                newShed.shedName = shedText
-                mainVC.shedArray.insert(newShed, atIndex: index)
-
-            }
-            index++
+                do {
+                    let fetchedEntities = try managedObjectContext.executeFetchRequest(fetchRequest) as! [TaskModel]
+                    
+                    for entity in fetchedEntities {
+                        managedObjectContext.deleteObject(entity)
+                    }
+                } catch {
+                    // Do something in response to error condition
+                }
+                
+                do {
+                    try managedObjectContext.save()
+                } catch {
+                    // Do something in response to error condition
+                }
+                
+                ///add as new
+                //////////////
+                predicate = NSPredicate(format: "schedule == %@", "")
+                
+                fetchRequest = NSFetchRequest(entityName: "TaskModel")
+                fetchRequest.predicate = predicate
+                
+                do {
+                    let fetchedEntities = try managedObjectContext.executeFetchRequest(fetchRequest) as! [TaskModel]
+                    
+                    for entity in fetchedEntities {
+                        
+                        let entityDescription = NSEntityDescription.entityForName("TaskModel", inManagedObjectContext: managedObjectContext)
+                        
+                        let task = TaskModel(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext)
+                        
+                        task.task     = entity.task
+                        task.date     = entity.date
+                        task.order    = entity.order
+                        task.schedule = shedText
+                        
+                    }
+                } catch {
+                    // Do something in response to error condition
+                }
+                
+                do {
+                    try managedObjectContext.save()
+                } catch let error as NSError {
+                    print("Save failed: \(error.localizedDescription)")
+                }
+                
+                
+                
         }
         
         
@@ -58,7 +132,7 @@ class SaveShedViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return mainVC.shedArray.count
+        return shedArray.count
     }
     
     //func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
@@ -67,11 +141,12 @@ class SaveShedViewController: UIViewController, UIPickerViewDataSource, UIPicker
     //}
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return mainVC.shedArray[row].shedName
+        return shedArray[row]
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        shedText = mainVC.shedArray[row].shedName
+        shedText = shedArray[row]
+        schedudeTextLabel.text = shedText
     }
     /*
     // MARK: - Navigation

@@ -23,18 +23,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var timeEnd: NSDate = NSDate.init()
     var from: Bool = true
     var currentIndexPath: NSIndexPath = NSIndexPath.init()
+    
+    //
     var timer: NSTimer = NSTimer.init()
     var activeTask: Int = 0
     
-    var isMovingItem: Bool = false
-    
     //task array
     var taskArray:[TaskModel]=[]
-    
-    // shedules
-    var shedArray:[ShedModel]=[]
-    var currentShed: ShedModel = ShedModel(shedName: "", taskArray: [])
-    
     
     @IBOutlet weak var editButton: UIBarButtonItem!
     
