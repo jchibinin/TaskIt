@@ -47,6 +47,19 @@ class PropertiesViewController: UIViewController {
     
     @IBAction func doneTapped(sender: UIButton) {
         
+     /*   if let managedObjectContext = (UIApplication.sharedApplication().delegate
+            as? AppDelegate)?.managedObjectContext {
+                let predicate = NSPredicate(format: "schedule == %@", "")
+                
+                let fetchRequest = NSFetchRequest(entityName: "TaskModel")
+                fetchRequest.predicate = predicate
+                do {
+                    try managedObjectContext.save()
+                } catch {
+                    // Do something in response to error condition
+                }}
+                ///////////////
+*/
         switch segmentControl.selectedSegmentIndex
         {
         case 0:
@@ -97,12 +110,11 @@ class PropertiesViewController: UIViewController {
     
     @IBAction func saveSheduleTapped(sender: AnyObject) {
     
-        var alert = UIAlertController(title: "Save", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: "Save", message: "", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "in new", style: UIAlertActionStyle.Default, handler:{(alert: UIAlertAction!) in self.saveInNew()}))
         alert.addAction(UIAlertAction(title: "in exist", style: UIAlertActionStyle.Default, handler:{(alert: UIAlertAction!) in self.saveInExist()}))
         self.presentViewController(alert, animated: true, completion: nil)
-      
-       
+        
     }
 
     /*
@@ -138,20 +150,20 @@ class PropertiesViewController: UIViewController {
         
         if segue.identifier == "showAddShed" {
             
-            let addShedVC: AddShedViewController = segue.destinationViewController as! AddShedViewController
+           // let addShedVC: AddShedViewController = segue.destinationViewController as! AddShedViewController
             
         
             
         } else if segue.identifier == "showSaveShed" {
             
-            let propertiesVC: SaveShedViewController = segue.destinationViewController as! SaveShedViewController
+           // let propertiesVC: SaveShedViewController = segue.destinationViewController as! SaveShedViewController
             
            
             
         } else if segue.identifier == "showOpenShed" {
             
             
-            let loadVC: OpenShedViewController = segue.destinationViewController as! OpenShedViewController
+          //  let loadVC: OpenShedViewController = segue.destinationViewController as! OpenShedViewController
             
             
             

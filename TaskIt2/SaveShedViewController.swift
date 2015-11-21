@@ -24,14 +24,14 @@ class SaveShedViewController: UIViewController, UIPickerViewDataSource, UIPicker
         let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         //get schedule array
         let managedObjectContext = appDelegate.managedObjectContext
-        var request = NSFetchRequest(entityName: "TaskModel")
+        let request = NSFetchRequest(entityName: "TaskModel")
         request.returnsObjectsAsFaults = false
         
         do {
             let results: NSArray = try managedObjectContext.executeFetchRequest(request)
             
             for res in results {
-                var schedule = res.valueForKey("schedule") as! String
+                let schedule = res.valueForKey("schedule") as! String
                 if !shedArray.contains(schedule) && schedule != ""
                 {
                     shedArray.append(schedule)

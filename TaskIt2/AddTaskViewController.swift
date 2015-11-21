@@ -53,7 +53,7 @@ class AddTaskViewController: UIViewController {
         
         appDelegate.saveContext()
         
-        var request = NSFetchRequest(entityName: "TaskModel")
+        let request = NSFetchRequest(entityName: "TaskModel")
         request.returnsObjectsAsFaults = false
         
         do {

@@ -17,22 +17,65 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
     
-    
-    //timers
-    var timeBegin: NSDate = NSDate.init()
-    var timeEnd: NSDate = NSDate.init()
-    var from: Bool = true
     var currentIndexPath: NSIndexPath = NSIndexPath.init()
     
-    //
     var timer: NSTimer = NSTimer.init()
     var activeTask: Int = 0
     
-    //task array
-    var taskArray:[TaskModel]=[]
+    //temp task array
+    var taskArray:[NSDate]=[]
     
     @IBOutlet weak var editButton: UIBarButtonItem!
     
+    //////////saving settings
+    var from : Bool {
+        get {
+            var returnValue: Bool? = NSUserDefaults.standardUserDefaults().objectForKey("from") as? Bool
+            if returnValue == nil {
+                NSUserDefaults.standardUserDefaults().setObject(true, forKey: "from")
+                NSUserDefaults.standardUserDefaults().synchronize()
+                returnValue = true
+            }
+            return returnValue!
+        }
+        set (newValue) {
+            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: "from")
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
+    }
+    
+    var timeEnd: NSDate {
+        get {
+            var returnValue: NSDate? = NSUserDefaults.standardUserDefaults().objectForKey("timeEnd") as? NSDate
+            if returnValue == nil {
+                NSUserDefaults.standardUserDefaults().setObject(NSDate.init(), forKey: "timeEnd")
+                NSUserDefaults.standardUserDefaults().synchronize()
+                returnValue = NSDate.init()
+            }
+            return returnValue!
+        }
+        set (newValue) {
+            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: "timeEnd")
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
+    }
+    
+    var timeBegin: NSDate {
+        get {
+            var returnValue: NSDate? = NSUserDefaults.standardUserDefaults().objectForKey("timeBegin") as? NSDate
+            if returnValue == nil {
+                NSUserDefaults.standardUserDefaults().setObject(NSDate.init(), forKey: "timeBegin")
+                NSUserDefaults.standardUserDefaults().synchronize()
+                returnValue = NSDate.init()
+            }
+            return returnValue!
+        }
+        set (newValue) {
+            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: "timeBegin")
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
+    }
+    /////////////////////////
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,49 +87,74 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             try fetchedResultController.performFetch()
         } catch _ {
         }
-        
+        updateTimeEndBegin()
     }
 
     override func viewDidAppear(animated: Bool) {
+    
         super.viewDidAppear(animated)
-
-        //compute second date
-       
+        updateTimeEndBegin()
+        tableView.reloadData()
+    }
+    
+    func updateTimeEndBegin()
+    {
+    
         var tasksSeconds:Int = 0
-        /*
-        for task in taskArray {
-            tasksSeconds = tasksSeconds + Date.toIntSec(date: task.date!)
+        //sum of secs
+        let request = taskFetchRequest()
+        request.returnsObjectsAsFaults = false
+        taskArray.removeAll()
+        do {
+            let results: NSArray = try managedObjectContext.executeFetchRequest(request)
+            
+            for res in results {
+                
+               taskArray.append(res.valueForKey("date") as! NSDate)
+            
             }
-        */
+        } catch let error as NSError {
+            // failure
+            print("Fetch failed: \(error.localizedDescription)")
+        }
+    
+        
+        for task in taskArray {
+            
+            tasksSeconds = tasksSeconds + Date.toIntSec(date: task)
+        
+        }
+        
         if from {
          timeEnd = timeBegin.dateByAddingTimeInterval(Double(tasksSeconds))
         }else{
          timeBegin = timeEnd.dateByAddingTimeInterval(-Double(tasksSeconds))
         }
         
-      //  timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("myHandler"), userInfo: nil, repeats: true)
-        
+        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("myHandler"), userInfo: nil, repeats: true)
+
+    
     }
     
     //timer
     func myHandler() {
        
-     /*
+     
         
         var tasksSeconds:Int = 0
         var taskSeconds:Int = 0
         var timeEndTask, timeBeginTask: NSDate
-        var currentTime: NSDate = NSDate.init()
+        let currentTime: NSDate = NSDate.init()
         var index:Int = 0
         var dateComparisionResultEnd:NSComparisonResult
         var dateComparisionResultBegin:NSComparisonResult
         var secsToEndTask: Int
         var cellText: String = ""
-        var lastActiveTask: Int = activeTask
+    //    let lastActiveTask: Int = activeTask
         
         for task in taskArray {
             timeEndTask = timeEnd.dateByAddingTimeInterval(-Double(tasksSeconds))
-            taskSeconds = Date.toIntSec(date: task.date!)
+            taskSeconds = Date.toIntSec(date: task)
             timeBeginTask = timeEnd.dateByAddingTimeInterval(-Double(tasksSeconds+taskSeconds))
             dateComparisionResultEnd = currentTime.compare(timeEndTask)
             dateComparisionResultBegin = currentTime.compare(timeBeginTask)
@@ -97,15 +165,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 activeTask = index
                 //skolko sek ostalos
                 //time end task - current time
-                secsToEndTask = Date.toIntSec(date: task.date!) - Int(NSDate().timeIntervalSinceDate(timeBeginTask))
+                secsToEndTask = Date.toIntSec(date: task) - Int(NSDate().timeIntervalSinceDate(timeBeginTask))
                 let minutes = Int(secsToEndTask/60)
-                let cellText = String(format:"%d:%02d", minutes, secsToEndTask - minutes*60)
+                if secsToEndTask != 1 {
+                    cellText = String(format:"%d:%02d", minutes, secsToEndTask - minutes*60)
+                }
                ///update cell
-                    let indexPath: NSIndexPath = NSIndexPath(forItem: activeTask, inSection: 0)
-                    let cell: TaskCell = tableView.cellForRowAtIndexPath(indexPath) as! TaskCell
-                    cell.descriptionLabel.text = cellText
+                let indexPath: NSIndexPath = NSIndexPath(forItem: activeTask, inSection: 0)
+                let cell: TaskCell = tableView.cellForRowAtIndexPath(indexPath) as! TaskCell
+                cell.descriptionLabel.text = cellText
 
-            } else {
+            //} else {
        
                 // kosyak?
             
@@ -120,7 +190,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             tasksSeconds = tasksSeconds + taskSeconds
             index = index+1
         }
-   */
+   
                 
     }
     
@@ -139,11 +209,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let thisTask = fetchedResultController.objectAtIndexPath(indexPath) as! TaskModel
             
             detailVC.detailTaskModel = thisTask
-          //  detailVC.mainVC = self
+          
          }
          else if segue.identifier == "showTaskAdd" {
             
-            let addTaskVC: AddTaskViewController = segue.destinationViewController as! AddTaskViewController
+          //  let addTaskVC: AddTaskViewController = segue.destinationViewController as! AddTaskViewController
             
             
          } else if segue.identifier == "showProperties" {
@@ -324,9 +394,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             
         
         self.tableView.endUpdates()
-    
-        
-
         
     }
     
@@ -334,7 +401,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func taskFetchRequest() -> NSFetchRequest {
         let fetchRequest = NSFetchRequest(entityName: "TaskModel")
-        let sortDecriptor = NSSortDescriptor(key: "order", ascending: true)
+        let sortDecriptor = NSSortDescriptor(key: "order", ascending: false)
         let predicate = NSPredicate(format: "schedule == %@", "")
         fetchRequest.predicate = predicate
         fetchRequest.sortDescriptors = [sortDecriptor]
@@ -367,8 +434,12 @@ func saveContext() {
    func controllerDidChangeContent(controller: NSFetchedResultsController)
    {
     
+    updateTimeEndBegin()
     tableView.reloadData()
-    
+   
 }
 
+    
+    
+    
 }
