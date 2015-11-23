@@ -17,6 +17,8 @@ class PropertiesViewController: UIViewController {
     
     @IBOutlet weak var segmentControl: UISegmentedControl!
     
+    
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -28,8 +30,6 @@ class PropertiesViewController: UIViewController {
             segmentControl.selectedSegmentIndex = 1
             self.dueDate.date = mainVC.timeEnd
         }
-        
-        
         
         // Do any additional setup after loading the view.
     }
@@ -47,19 +47,7 @@ class PropertiesViewController: UIViewController {
     
     @IBAction func doneTapped(sender: UIButton) {
         
-     /*   if let managedObjectContext = (UIApplication.sharedApplication().delegate
-            as? AppDelegate)?.managedObjectContext {
-                let predicate = NSPredicate(format: "schedule == %@", "")
-                
-                let fetchRequest = NSFetchRequest(entityName: "TaskModel")
-                fetchRequest.predicate = predicate
-                do {
-                    try managedObjectContext.save()
-                } catch {
-                    // Do something in response to error condition
-                }}
-                ///////////////
-*/
+     
         switch segmentControl.selectedSegmentIndex
         {
         case 0:
@@ -77,46 +65,11 @@ class PropertiesViewController: UIViewController {
         
     }
     //shedule actions
-    @IBAction func newSheduleTapped(sender: UIButton) {
-        
-        if let managedObjectContext = (UIApplication.sharedApplication().delegate
-            as? AppDelegate)?.managedObjectContext {
-                ///clear all
-                //////////////
-                let predicate = NSPredicate(format: "schedule == %@", "")
-                
-                let fetchRequest = NSFetchRequest(entityName: "TaskModel")
-                fetchRequest.predicate = predicate
-                
-                do {
-                    let fetchedEntities = try managedObjectContext.executeFetchRequest(fetchRequest) as! [TaskModel]
-                    
-                    for entity in fetchedEntities {
-                        managedObjectContext.deleteObject(entity)
-                    }
-                } catch {
-                    // Do something in response to error condition
-                }
-                
-                do {
-                    try managedObjectContext.save()
-                } catch {
-                    // Do something in response to error condition
-                }
-                ///////////////
-               
-        }    }
     
-    
-    @IBAction func saveSheduleTapped(sender: AnyObject) {
-    
-        let alert = UIAlertController(title: "Save", message: "", preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "in new", style: UIAlertActionStyle.Default, handler:{(alert: UIAlertAction!) in self.saveInNew()}))
-        alert.addAction(UIAlertAction(title: "in exist", style: UIAlertActionStyle.Default, handler:{(alert: UIAlertAction!) in self.saveInExist()}))
-        self.presentViewController(alert, animated: true, completion: nil)
-        
+   
+    @IBAction func setCurrentTimeTapped(sender: UIButton) {
+        dueDate.date = NSDate.init()
     }
-
     /*
     // MARK: - Navigation
 
@@ -127,46 +80,4 @@ class PropertiesViewController: UIViewController {
     }
     */
     
-    func saveInNew(){
-        
-        self.performSegueWithIdentifier("showAddShed", sender: self)
-
-    }
-
-    
-    func saveInExist(){
-        
-        self.performSegueWithIdentifier("showSaveShed", sender: self)
-        
-    }
-    
-    @IBAction func loadSheduleTapped(sender: UIButton) {
-    
-        self.performSegueWithIdentifier("showOpenShed", sender: self)
-       
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        if segue.identifier == "showAddShed" {
-            
-           // let addShedVC: AddShedViewController = segue.destinationViewController as! AddShedViewController
-            
-        
-            
-        } else if segue.identifier == "showSaveShed" {
-            
-           // let propertiesVC: SaveShedViewController = segue.destinationViewController as! SaveShedViewController
-            
-           
-            
-        } else if segue.identifier == "showOpenShed" {
-            
-            
-          //  let loadVC: OpenShedViewController = segue.destinationViewController as! OpenShedViewController
-            
-            
-            
-        }
-    }
 }

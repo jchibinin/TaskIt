@@ -216,19 +216,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
           //  let addTaskVC: AddTaskViewController = segue.destinationViewController as! AddTaskViewController
             
             
-         } else if segue.identifier == "showProperties" {
+         } else if segue.identifier == "showSetTime" {
             
             let propertiesVC: PropertiesViewController = segue.destinationViewController as! PropertiesViewController
             propertiesVC.mainVC = self
             
          }         
     }
-    
-    @IBAction func propetiesButtonTapped(sender: UIBarButtonItem) {
+    //properties not used
+    //@IBAction func propetiesButtonTapped(sender: UIBarButtonItem) {
         
-        self.performSegueWithIdentifier("showProperties", sender: self)
-        timer.invalidate()
-    }
+      //  self.performSegueWithIdentifier("showProperties", sender: self)
+      //  timer.invalidate()
+   // }
     
     @IBAction func addButtonTapped(sender: UIBarButtonItem) {
      
@@ -438,8 +438,73 @@ func saveContext() {
     tableView.reloadData()
    
 }
-
+///////////////////buttons
+    
+    @IBAction func barCleanButtonTapped(sender: UIBarButtonItem) {
+        
+        if let managedObjectContext = (UIApplication.sharedApplication().delegate
+            as? AppDelegate)?.managedObjectContext {
+                ///clear all
+                //////////////
+                let predicate = NSPredicate(format: "schedule == %@", "")
+                
+                let fetchRequest = NSFetchRequest(entityName: "TaskModel")
+                fetchRequest.predicate = predicate
+                
+                do {
+                    let fetchedEntities = try managedObjectContext.executeFetchRequest(fetchRequest) as! [TaskModel]
+                    
+                    for entity in fetchedEntities {
+                        managedObjectContext.deleteObject(entity)
+                    }
+                } catch {
+                    // Do something in response to error condition
+                }
+                
+                do {
+                    try managedObjectContext.save()
+                } catch {
+                    // Do something in response to error condition
+                }
+                ///////////////
+                
+        }
+        
+    }
+    
+    @IBAction func barSaverButtonTapped(sender: UIBarButtonItem) {
+        
+        let alert = UIAlertController(title: "Save", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "in new", style: UIAlertActionStyle.Default, handler:{(alert: UIAlertAction!) in self.saveInNew()}))
+        alert.addAction(UIAlertAction(title: "in exist", style: UIAlertActionStyle.Default, handler:{(alert: UIAlertAction!) in self.saveInExist()}))
+        self.presentViewController(alert, animated: true, completion: nil)
+    
+    }
     
     
+    @IBAction func barLoadButtonTapped(sender: UIBarButtonItem) {
+        
+        self.performSegueWithIdentifier("showOpenShed", sender: self)
+    }
     
+    
+    @IBAction func barSetTimeTapped(sender: UIBarButtonItem) {
+       
+        self.performSegueWithIdentifier("showSetTime", sender: self)
+        timer.invalidate()
+    }
+    ////save func
+    
+    func saveInNew(){
+        
+        self.performSegueWithIdentifier("showAddShed", sender: self)
+        
+    }
+    
+    
+    func saveInExist(){
+        
+        self.performSegueWithIdentifier("showSaveShed", sender: self)
+        
+    }
 }
