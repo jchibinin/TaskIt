@@ -34,7 +34,7 @@ class Date {
         
         let dateStringFormater = NSDateFormatter()
         dateStringFormater.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-        dateStringFormater.dateFormat = "HH:mm MMMM d, y"
+        dateStringFormater.dateFormat = "HH:mm MMMM, d"
         let dateString = dateStringFormater.stringFromDate(date)
         return dateString
         

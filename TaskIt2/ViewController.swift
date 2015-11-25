@@ -268,15 +268,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
-        return 25
+        return 35
     
     }
     
     func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         
-        return 25
+        return 35
     }
     
+    
+  /*
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         var title: String = ""
         var direction: String = ""
@@ -288,9 +290,47 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return title
         
     }
+   */
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+       
+        var title: String = ""
+        var direction: String = ""
+        if  !from {
+            direction = " ↓"
+        }
+        
+        title = Date.toStringLong(date: timeEnd) + direction
+        //return title
+        
+        let label : UILabel = UILabel()
+        label.textColor =  UIColor.darkGrayColor()
+        label.backgroundColor = UIColor(red: 0.227, green: 0.226, blue: 0.229, alpha: 0.1)
+        //label.textAlignment =
+        label.text = "   "+title
+   
+        return label
+    }
     
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        var title: String = ""
+        var direction: String = ""
+        if  from {
+            direction = " ↑"
+        }
+        
+        title = Date.toStringLong(date: timeBegin) + direction
+        
+        let label : UILabel = UILabel()
+        label.textColor =  UIColor.darkGrayColor()
+        label.backgroundColor = UIColor(red: 0.227, green: 0.226, blue: 0.229, alpha: 0.1)
+        //label.textAlignment =
+        label.text = "   "+title
+        
+        return label
+        
+    }
     
-    func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+  /*  func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         var title: String = ""
         var direction: String = ""
         if  from {
@@ -300,7 +340,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         title = Date.toStringLong(date: timeBegin) + direction
         return title
     
-    }
+    }*/
     
     //UITableViewDelegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
