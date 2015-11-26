@@ -21,7 +21,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" sectionHeaderHeight="35" sectionFooterHeight="35" translatesAutoresizingMaskIntoConstraints="NO" id="Yng-5N-VCr">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="492"/>
                                 <animations/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" showsReorderControl="YES" indentationWidth="10" reuseIdentifier="myCell" rowHeight="75" id="pPi-U4-sPH" customClass="TaskCell" customModule="TaskIt2" customModuleProvider="target">
@@ -170,18 +170,8 @@
                                     <segment title="From start"/>
                                     <segment title="From finish"/>
                                 </segments>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1L7-ti-Jc8">
-                                <rect key="frame" x="35" y="353" width="530" height="15"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="15" id="o63-lS-68B"/>
-                                </constraints>
-                                <state key="normal" title="Set current time"/>
-                                <connections>
-                                    <action selector="setCurrentTimeTapped:" destination="97I-Bd-oxQ" eventType="touchUpInside" id="FNF-Hs-kvZ"/>
-                                </connections>
-                            </button>
                             <navigationBar contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="KOX-M5-R2F">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <animations/>
@@ -198,7 +188,7 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <state key="normal" title="Cancel">
-                                                    <color key="titleColor" red="0.35294117650000001" green="0.1215686275" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="cancelTapped:" destination="97I-Bd-oxQ" eventType="touchUpInside" id="NiJ-2Q-ZKQ"/>
@@ -215,7 +205,7 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <state key="normal" title="Done">
-                                                    <color key="titleColor" red="0.35294117650000001" green="0.1215686275" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="doneTapped:" destination="97I-Bd-oxQ" eventType="touchUpInside" id="2KG-w3-men"/>
@@ -235,9 +225,22 @@
                                     <!--2015-11-02 19:21:45 +0000-->
                                 </date>
                             </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1L7-ti-Jc8">
+                                <rect key="frame" x="35" y="353" width="530" height="15"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="o63-lS-68B"/>
+                                </constraints>
+                                <state key="normal" title="Set current time">
+                                    <color key="titleColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="setCurrentTimeTapped:" destination="97I-Bd-oxQ" eventType="touchUpInside" id="FNF-Hs-kvZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="KOX-M5-R2F" secondAttribute="trailing" id="AR0-f6-aHU"/>
                             <constraint firstItem="1L7-ti-Jc8" firstAttribute="top" secondItem="dNy-LW-rxJ" secondAttribute="bottom" constant="15" id="BEn-QZ-Sr3"/>
@@ -287,7 +290,7 @@
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <state key="normal" title="Cancel">
-                                                    <color key="titleColor" red="0.35294117650000001" green="0.1215686275" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="cancelTapped:" destination="c4B-DI-4Zg" eventType="touchUpInside" id="O3O-6j-BDb"/>
@@ -301,7 +304,7 @@
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <state key="normal" title="Add shedule">
-                                                    <color key="titleColor" red="0.35294117650000001" green="0.1215686275" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="doneTapped:" destination="c4B-DI-4Zg" eventType="touchUpInside" id="b83-1z-W4t"/>
@@ -319,7 +322,8 @@
                             </textField>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="W9y-ZJ-IHP" firstAttribute="centerX" secondItem="E4Y-fA-YCN" secondAttribute="centerX" id="DNI-Wo-Ihb"/>
                             <constraint firstItem="E4Y-fA-YCN" firstAttribute="leading" secondItem="HaV-4a-UjH" secondAttribute="leading" id="PaH-CY-Max"/>
@@ -374,7 +378,7 @@
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <state key="normal" title="Cancel">
-                                                    <color key="titleColor" red="0.35294117650000001" green="0.1215686275" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="cancelButtonTapped:" destination="zEI-8r-cy7" eventType="touchUpInside" id="mo3-RU-ITd"/>
@@ -388,7 +392,7 @@
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <state key="normal" title="Done">
-                                                    <color key="titleColor" red="0.35294117650000001" green="0.1215686275" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="doneButtonTapped:" destination="zEI-8r-cy7" eventType="touchUpInside" id="j2B-am-KDi"/>
@@ -407,7 +411,7 @@
                             </pickerView>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="P2x-i2-Ndi" firstAttribute="leading" secondItem="LKe-f9-mJL" secondAttribute="leadingMargin" constant="15" id="6Ek-2n-vxk"/>
                             <constraint firstItem="P2x-i2-Ndi" firstAttribute="top" secondItem="PyO-Rh-aaS" secondAttribute="bottom" constant="15" id="AGz-rU-WYP"/>
@@ -442,16 +446,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select schedule" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yiM-Zi-vWe">
-                                <rect key="frame" x="0.0" y="79" width="600" height="21"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="oS5-bO-YKn"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rzM-no-D7l">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <animations/>
@@ -470,7 +464,7 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <state key="normal" title="Cancel">
-                                                    <color key="titleColor" red="0.35294117650000001" green="0.1215686275" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <variation key="default">
                                                     <mask key="constraints">
@@ -492,7 +486,7 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <state key="normal" title="Done">
-                                                    <color key="titleColor" red="0.35294117650000001" green="0.1215686275" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="doneButtonTapped:" destination="mKO-KJ-Srn" eventType="touchUpInside" id="WCn-7K-o5H"/>
@@ -509,9 +503,19 @@
                                     <outlet property="delegate" destination="mKO-KJ-Srn" id="GR9-uw-HUL"/>
                                 </connections>
                             </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select schedule" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yiM-Zi-vWe">
+                                <rect key="frame" x="0.0" y="79" width="600" height="21"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="oS5-bO-YKn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="APz-ex-1da" firstAttribute="leading" secondItem="GtH-wB-XHf" secondAttribute="leadingMargin" constant="15" id="7iD-AS-J1G"/>
                             <constraint firstAttribute="trailingMargin" secondItem="APz-ex-1da" secondAttribute="trailing" constant="15" id="FCd-C3-cdr"/>
@@ -601,7 +605,7 @@
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <state key="normal" title="Cancel">
-                                                    <color key="titleColor" red="0.35294117650000001" green="0.1215686275" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="cancelButtonTapped:" destination="gWK-Ta-Tyh" eventType="touchUpInside" id="tPS-QU-c0m"/>
@@ -615,7 +619,7 @@
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <state key="normal" title="Add task">
-                                                    <color key="titleColor" red="0.35294117650000001" green="0.1215686275" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="addTaskButtonTapped:" destination="gWK-Ta-Tyh" eventType="touchUpInside" id="WHM-mD-UEj"/>
@@ -627,7 +631,7 @@
                             </navigationBar>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="zIC-KJ-S1D" firstAttribute="leading" secondItem="o0c-Ke-w9V" secondAttribute="leading" constant="3" id="6H8-zu-gpi"/>
                             <constraint firstItem="zIC-KJ-S1D" firstAttribute="top" secondItem="o0c-Ke-w9V" secondAttribute="bottom" constant="8" symbolic="YES" id="H9r-zP-EjC"/>
@@ -684,7 +688,7 @@
                             </datePicker>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="2n6-XT-Gzv" firstAttribute="leading" secondItem="7bh-aN-Qve" secondAttribute="leadingMargin" constant="15" id="B9T-CL-aiD"/>
                             <constraint firstItem="2n6-XT-Gzv" firstAttribute="centerX" secondItem="7bh-aN-Qve" secondAttribute="centerX" id="DJh-c5-4on"/>
@@ -698,13 +702,13 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Detail" id="1b7-lv-l8l">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Gkn-BF-IQE">
-                            <color key="tintColor" red="0.35294117647058826" green="0.12156862745098039" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="cancelButtonTapped:" destination="6OM-MW-Zpu" id="aXh-Nw-xM5"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="qT4-mp-Pco">
-                            <color key="tintColor" red="0.35294117647058826" green="0.12156862745098039" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="doneBarButtonItemTapped:" destination="6OM-MW-Zpu" id="rUN-W5-bBO"/>
                             </connections>

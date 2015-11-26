@@ -33,6 +33,45 @@ class AddShedViewController: UIViewController {
 
     @IBAction func doneTapped(sender: UIButton) {
         
+        var shedArray: [String] = []
+        //get schedule array
+        let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        let managedObjectContext = appDelegate.managedObjectContext
+        let request = NSFetchRequest(entityName: "TaskModel")
+        request.returnsObjectsAsFaults = false
+        
+        do {
+            let results: NSArray = try managedObjectContext.executeFetchRequest(request)
+            
+            for res in results {
+                let schedule = res.valueForKey("schedule") as! String
+                if !shedArray.contains(schedule) && schedule != ""
+                {
+                    shedArray.append(schedule)
+                    
+                }
+            }
+        } catch let error as NSError {
+            // failure
+            print("Fetch failed: \(error.localizedDescription)")
+        }
+        
+        ///proverka
+        if shedArray.contains(nameShed.text!)  {
+            
+            let alert = UIAlertController(title: "This name is exist!", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler:nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+
+            
+        } else if nameShed.text == "" {
+        
+            let alert = UIAlertController(title: "Empty name!", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler:nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        
+        } else {
+        
         if let managedObjectContext = (UIApplication.sharedApplication().delegate
             as? AppDelegate)?.managedObjectContext {
                 ///add new 
@@ -69,7 +108,7 @@ class AddShedViewController: UIViewController {
                 
         }
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismissViewControllerAnimated(true, completion: nil) }
     }
     /*
     // MARK: - Navigation

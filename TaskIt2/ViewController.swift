@@ -173,7 +173,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                ///update cell
                 let indexPath: NSIndexPath = NSIndexPath(forItem: activeTask, inSection: 0)
                 let cell: TaskCell = tableView.cellForRowAtIndexPath(indexPath) as! TaskCell
-                cell.descriptionLabel.text = cellText
+                    
+                    cell.descriptionLabel.text = cellText
 
             //} else {
        
@@ -395,7 +396,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             self.tableView?.setEditing(true, animated: true)
             self.editButton!.tag = 200
             self.editButton.title = "Done"
-          //  timer.invalidate()
+            //timer.invalidate()
         }
         else
         {
@@ -516,7 +517,35 @@ func saveContext() {
         
         let alert = UIAlertController(title: "Save", message: "", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "in new", style: UIAlertActionStyle.Default, handler:{(alert: UIAlertAction!) in self.saveInNew()}))
-        alert.addAction(UIAlertAction(title: "in exist", style: UIAlertActionStyle.Default, handler:{(alert: UIAlertAction!) in self.saveInExist()}))
+        
+        //proverka
+        var shedArray: [String] = []
+        //get schedule array
+        let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        let managedObjectContext = appDelegate.managedObjectContext
+        let request = NSFetchRequest(entityName: "TaskModel")
+        request.returnsObjectsAsFaults = false
+        
+        do {
+            let results: NSArray = try managedObjectContext.executeFetchRequest(request)
+            
+            for res in results {
+                let schedule = res.valueForKey("schedule") as! String
+                if !shedArray.contains(schedule) && schedule != ""
+                {
+                    shedArray.append(schedule)
+                    
+                }
+            }
+        } catch let error as NSError {
+            // failure
+            print("Fetch failed: \(error.localizedDescription)")
+        }
+        
+        ///proverka
+        if shedArray.count > 0 {        alert.addAction(UIAlertAction(title: "in exist", style: UIAlertActionStyle.Default, handler:{(alert: UIAlertAction!) in self.saveInExist()}))
+        }
+        
         self.presentViewController(alert, animated: true, completion: nil)
     
     }
@@ -524,7 +553,38 @@ func saveContext() {
     
     @IBAction func barLoadButtonTapped(sender: UIBarButtonItem) {
         
-        self.performSegueWithIdentifier("showOpenShed", sender: self)
+        var shedArray: [String] = []
+        //get schedule array
+        let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        let managedObjectContext = appDelegate.managedObjectContext
+        let request = NSFetchRequest(entityName: "TaskModel")
+        request.returnsObjectsAsFaults = false
+        
+        do {
+            let results: NSArray = try managedObjectContext.executeFetchRequest(request)
+            
+            for res in results {
+                let schedule = res.valueForKey("schedule") as! String
+                if !shedArray.contains(schedule) && schedule != ""
+                {
+                    shedArray.append(schedule)
+                    
+                }
+            }
+        } catch let error as NSError {
+            // failure
+            print("Fetch failed: \(error.localizedDescription)")
+        }
+        
+        ///proverka
+        if shedArray.count > 0 {
+            self.performSegueWithIdentifier("showOpenShed", sender: self) }
+        else {
+            
+            let alert = UIAlertController(title: "Nothing to load", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler:nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
     

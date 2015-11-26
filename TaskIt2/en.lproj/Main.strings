@@ -1,0 +1,84 @@
+
+/* Class = "UIButton"; normalTitle = "Set current time"; ObjectID = "1L7-ti-Jc8"; */
+"1L7-ti-Jc8.normalTitle" = "Set current time";
+
+/* Class = "UINavigationItem"; title = "Detail"; ObjectID = "1b7-lv-l8l"; */
+"1b7-lv-l8l.title" = "Detail";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "1rO-JH-sah"; */
+"1rO-JH-sah.normalTitle" = "Cancel";
+
+/* Class = "UITextField"; text = "Task"; ObjectID = "2n6-XT-Gzv"; */
+"2n6-XT-Gzv.text" = "Task";
+
+/* Class = "UINavigationItem"; title = "Load schedule"; ObjectID = "3k2-Xh-i1K"; */
+"3k2-Xh-i1K.title" = "Load schedule";
+
+/* Class = "UILabel"; text = "Task"; ObjectID = "4IR-He-03u"; */
+"4IR-He-03u.text" = "Task";
+
+/* Class = "UISegmentedControl"; 5Gr-yE-wNQ.segmentTitles[0] = "From start"; ObjectID = "5Gr-yE-wNQ"; */
+"5Gr-yE-wNQ.segmentTitles[0]" = "From start";
+
+/* Class = "UISegmentedControl"; 5Gr-yE-wNQ.segmentTitles[1] = "From finish"; ObjectID = "5Gr-yE-wNQ"; */
+"5Gr-yE-wNQ.segmentTitles[1]" = "From finish";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "6WE-ZO-aFq"; */
+"6WE-ZO-aFq.normalTitle" = "Done";
+
+/* Class = "UIButton"; normalTitle = "Add task"; ObjectID = "6lp-Ty-6IA"; */
+"6lp-Ty-6IA.normalTitle" = "Add task";
+
+/* Class = "UINavigationItem"; title = "Set time"; ObjectID = "CZR-Ei-9l6"; */
+"CZR-Ei-9l6.title" = "Set time";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "EMc-8e-L9e"; */
+"EMc-8e-L9e.normalTitle" = "Cancel";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "Fuu-bV-f4W"; */
+"Fuu-bV-f4W.normalTitle" = "Done";
+
+/* Class = "UIButton"; normalTitle = "Add shedule"; ObjectID = "Hod-sE-P8R"; */
+"Hod-sE-P8R.normalTitle" = "Add shedule";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "JF0-A5-dBs"; */
+"JF0-A5-dBs.normalTitle" = "Cancel";
+
+/* Class = "UINavigationItem"; title = "Save as.."; ObjectID = "Kls-LQ-rI9"; */
+"Kls-LQ-rI9.title" = "Save as..";
+
+/* Class = "UILabel"; text = "Timer"; ObjectID = "L6j-86-4SL"; */
+"L6j-86-4SL.text" = "Timer";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "MEu-vj-iBd"; */
+"MEu-vj-iBd.normalTitle" = "Done";
+
+/* Class = "UILabel"; text = "Task:"; ObjectID = "OCg-Cd-WXg"; */
+"OCg-Cd-WXg.text" = "Task:";
+
+/* Class = "UILabel"; text = "Select schedule"; ObjectID = "P2x-i2-Ndi"; */
+"P2x-i2-Ndi.text" = "Select schedule";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "Qmk-gg-o4G"; */
+"Qmk-gg-o4G.normalTitle" = "Cancel";
+
+/* Class = "UITextField"; placeholder = "Enter name of shedule"; ObjectID = "W9y-ZJ-IHP"; */
+"W9y-ZJ-IHP.placeholder" = "Enter name of shedule";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "XEn-4M-S9e"; */
+"XEn-4M-S9e.normalTitle" = "Cancel";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "nXk-af-LgZ"; */
+"nXk-af-LgZ.title" = "Edit";
+
+/* Class = "UINavigationItem"; title = "InTime"; ObjectID = "nun-5O-iYo"; */
+"nun-5O-iYo.title" = "InTime";
+
+/* Class = "UILabel"; text = "Date:"; ObjectID = "o0c-Ke-w9V"; */
+"o0c-Ke-w9V.text" = "Date:";
+
+/* Class = "UILabel"; text = "Time"; ObjectID = "xDM-4j-qFN"; */
+"xDM-4j-qFN.text" = "Time";
+
+/* Class = "UILabel"; text = "Select schedule"; ObjectID = "yiM-Zi-vWe"; */
+"yiM-Zi-vWe.text" = "Select schedule";
