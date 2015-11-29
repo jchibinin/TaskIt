@@ -18,6 +18,8 @@ class SaveShedViewController: UIViewController, UIPickerViewDataSource, UIPicker
 
     @IBOutlet weak var pickerView: UIPickerView!
     
+    @IBOutlet weak var doneButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,6 +44,9 @@ class SaveShedViewController: UIViewController, UIPickerViewDataSource, UIPicker
             // failure
             print("Fetch failed: \(error.localizedDescription)")
         }
+        
+        doneButton.enabled = false
+        doneButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
         
       //  pickerView.dataSource = self
       //  pickerView.delegate = self
@@ -147,6 +152,8 @@ class SaveShedViewController: UIViewController, UIPickerViewDataSource, UIPicker
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         shedText = shedArray[row]
         schedudeTextLabel.text = shedText
+        doneButton.enabled = true
+        doneButton.setTitleColor(UIColor(red:255/255, green:102/255, blue:102/255, alpha:1.0), forState: UIControlState.Normal)    
     }
     /*
     // MARK: - Navigation

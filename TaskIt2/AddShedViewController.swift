@@ -14,9 +14,12 @@ class AddShedViewController: UIViewController {
   
     @IBOutlet weak var nameShed: UITextField!
     
+    @IBOutlet weak var addScheduleButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        addScheduleButton.enabled = false
+        addScheduleButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
         // Do any additional setup after loading the view.
     }
 
@@ -31,6 +34,21 @@ class AddShedViewController: UIViewController {
         
     }
 
+    @IBAction func changeTextSchedule(sender: UITextField) {
+        
+        if nameShed.text == "" {
+            
+            
+            addScheduleButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
+            addScheduleButton.enabled = false
+            
+        } else {
+            addScheduleButton.enabled = true
+            addScheduleButton.setTitleColor(UIColor(red:255/255, green:102/255, blue:102/255, alpha:1.0), forState: UIControlState.Normal)
+        }
+        
+        
+    }
     @IBAction func doneTapped(sender: UIButton) {
         
         var shedArray: [String] = []

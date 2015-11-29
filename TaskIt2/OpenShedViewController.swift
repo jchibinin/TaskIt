@@ -18,6 +18,8 @@ class OpenShedViewController: UIViewController {
     
     @IBOutlet weak var pickerView: UIPickerView!
     
+    @IBOutlet weak var doneButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,6 +46,8 @@ class OpenShedViewController: UIViewController {
             print("Fetch failed: \(error.localizedDescription)")
         }
         
+        doneButton.enabled = false
+        doneButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
         
         // Do any additional setup after loading the view.
     }
@@ -145,7 +149,8 @@ class OpenShedViewController: UIViewController {
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         shedText = shedArray[row]
         sheduleLabelText.text = shedText
-    }
+        doneButton.enabled = true
+        doneButton.setTitleColor(UIColor(red:255/255, green:102/255, blue:102/255, alpha:1.0), forState: UIControlState.Normal)    }
 
     
     /*

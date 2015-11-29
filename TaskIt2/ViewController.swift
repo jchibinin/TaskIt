@@ -27,6 +27,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet weak var editButton: UIBarButtonItem!
     
+    
+    
+    
     //////////saving settings
     var from : Bool {
         get {

@@ -18,6 +18,7 @@ class TaskDetailViewController: UIViewController {
     @IBOutlet weak var taskTexField: UITextField!
     @IBOutlet weak var dueDatePicker: UIDatePicker!
     
+    @IBOutlet weak var doneButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,19 @@ class TaskDetailViewController: UIViewController {
        
     }
 
+    @IBAction func textChanged(sender: UITextField) {
+    
+        if taskTexField.text == "" {
+         
+           doneButton.enabled = false
+            
+        } else
+        {
+            doneButton.enabled = true
+        }
+    
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

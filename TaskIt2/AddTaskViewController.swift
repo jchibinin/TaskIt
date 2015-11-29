@@ -18,10 +18,15 @@ class AddTaskViewController: UIViewController {
   //  @IBOutlet weak var dueDatePicker: UIDatePicker!
     @IBOutlet weak var dueDatePicker: UIDatePicker!
    
+    @IBOutlet weak var addButton: UIBarButtonItem!
+    
+    @IBOutlet weak var addButtonButton: UIButton!
     ///2.16
     override func viewDidLoad() {
         super.viewDidLoad()
         dueDatePicker.date = Date.from("00:05")
+        addButtonButton.enabled = false
+         addButtonButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
         // Do any additional setup after loading the view.
     }
 
@@ -30,6 +35,20 @@ class AddTaskViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func taskChanged(sender: UITextField) {
+        
+        if taskTextField.text == "" {
+            
+            
+            addButtonButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
+            addButtonButton.enabled = false
+       
+        } else {
+            addButtonButton.enabled = true
+             addButtonButton.setTitleColor(UIColor(red:255/255, green:102/255, blue:102/255, alpha:1.0), forState: UIControlState.Normal)
+        }
+        
+    }
     @IBAction func cancelButtonTapped(sender: UIButton) {
       self.dismissViewControllerAnimated(true, completion: nil)
     }
