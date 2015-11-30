@@ -263,7 +263,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.taskLabel.text = thisTask.task
         cell.descriptionLabel.text = ""
         cell.dateLabel.text = Date.toString(date: thisTask.date!)
-        
+        cell.notifyLabel.text = String(thisTask.notify)
         
         return cell
     }

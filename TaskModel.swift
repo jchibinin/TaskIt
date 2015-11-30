@@ -15,6 +15,7 @@ class TaskModel: NSManagedObject {
     @NSManaged var task:  String?
     @NSManaged var order: Int32
     @NSManaged var schedule: String?
+    @NSManaged var notify: Bool
     
     func lastMaxPosition () -> Int32 {
         let predicate = NSPredicate(format: "schedule == %@", "")

@@ -16,6 +16,11 @@ class TaskCell: UITableViewCell {
     
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    
+    @IBOutlet weak var notifyLabel: UILabel!
+
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

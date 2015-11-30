@@ -70,6 +70,7 @@
 		665696271BF27D49007C9509 /* TaskModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskModel.swift; path = ../TaskModel.swift; sourceTree = "<group>"; };
 		66592B361BD96AD400A6AF7F /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		665C61A61BEE6DEC00F4ABA6 /* SaveShedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveShedViewController.swift; sourceTree = "<group>"; };
+		666FFB2E1C0CDD5F0018CB65 /* TaskModel 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "TaskModel 4.xcdatamodel"; sourceTree = "<group>"; };
 		6673279C1BFBA0860084AA48 /* TaskModel 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "TaskModel 3.xcdatamodel"; sourceTree = "<group>"; };
 		66D0EBBC1BD6C04D00C1C785 /* TaskDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskDetailViewController.swift; path = ../TaskDetailViewController.swift; sourceTree = "<group>"; };
 		66F0AA801BDD67C8007E4683 /* AddTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
@@ -559,11 +560,12 @@
 		662CEDBA1BD3E2A70051D4DA /* TaskModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				666FFB2E1C0CDD5F0018CB65 /* TaskModel 4.xcdatamodel */,
 				6673279C1BFBA0860084AA48 /* TaskModel 3.xcdatamodel */,
 				66491FE21BF52984003A102E /* TaskModel 2.xcdatamodel */,
 				662CEDBB1BD3E2A70051D4DA /* TaskModel.xcdatamodel */,
 			);
-			currentVersion = 6673279C1BFBA0860084AA48 /* TaskModel 3.xcdatamodel */;
+			currentVersion = 666FFB2E1C0CDD5F0018CB65 /* TaskModel 4.xcdatamodel */;
 			path = TaskModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

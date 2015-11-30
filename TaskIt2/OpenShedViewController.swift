@@ -113,6 +113,7 @@ class OpenShedViewController: UIViewController {
                         task.date     = entity.date
                         task.order    = entity.order
                         task.schedule = ""
+                        task.notify   = entity.notify
                         
                     }
                 } catch {

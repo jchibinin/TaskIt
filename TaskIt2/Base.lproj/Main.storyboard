@@ -31,8 +31,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="74"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xDM-4j-qFN">
-                                                    <rect key="frame" x="23" y="37" width="73" height="24"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xDM-4j-qFN">
+                                                    <rect key="frame" x="23" y="35" width="73" height="24"/>
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="73" id="4vf-bt-E8d"/>
@@ -58,6 +58,13 @@
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notify" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pyN-E3-ZQp">
+                                                    <rect key="frame" x="61" y="36" width="42" height="21"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <animations/>
                                             <constraints>
@@ -77,6 +84,7 @@
                                         <connections>
                                             <outlet property="dateLabel" destination="xDM-4j-qFN" id="pwt-xQ-lUU"/>
                                             <outlet property="descriptionLabel" destination="L6j-86-4SL" id="8UO-rG-1UF"/>
+                                            <outlet property="notifyLabel" destination="pyN-E3-ZQp" id="opZ-wU-a0A"/>
                                             <outlet property="taskLabel" destination="4IR-He-03u" id="Ud5-ti-kNB"/>
                                         </connections>
                                     </tableViewCell>
@@ -638,30 +646,47 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notification on start:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xw-Ki-RrQ">
+                                <rect key="frame" x="35" y="318" width="480" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o7X-jE-vM2">
+                                <rect key="frame" x="516" y="313" width="51" height="31"/>
+                                <animations/>
+                            </switch>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="o7X-jE-vM2" firstAttribute="leading" secondItem="2xw-Ki-RrQ" secondAttribute="trailing" constant="1" id="0bH-VJ-FjH"/>
                             <constraint firstItem="zIC-KJ-S1D" firstAttribute="leading" secondItem="o0c-Ke-w9V" secondAttribute="leading" constant="3" id="6H8-zu-gpi"/>
                             <constraint firstItem="zIC-KJ-S1D" firstAttribute="top" secondItem="o0c-Ke-w9V" secondAttribute="bottom" constant="8" symbolic="YES" id="H9r-zP-EjC"/>
                             <constraint firstItem="iU2-do-iU6" firstAttribute="top" secondItem="OCg-Cd-WXg" secondAttribute="bottom" constant="8" symbolic="YES" id="Jjk-Be-DZR"/>
                             <constraint firstItem="iU2-do-iU6" firstAttribute="leading" secondItem="o0c-Ke-w9V" secondAttribute="leading" constant="3" id="OFK-aH-CDb"/>
+                            <constraint firstItem="o7X-jE-vM2" firstAttribute="trailing" secondItem="zIC-KJ-S1D" secondAttribute="trailing" id="Os5-QR-8ga"/>
                             <constraint firstItem="OCg-Cd-WXg" firstAttribute="top" secondItem="APD-CK-YNC" secondAttribute="bottom" constant="10" id="Pb9-xj-ZE4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="iU2-do-iU6" secondAttribute="trailing" constant="15" id="Qws-V0-vgO"/>
                             <constraint firstItem="ukZ-Io-GtT" firstAttribute="top" relation="lessThanOrEqual" secondItem="zIC-KJ-S1D" secondAttribute="bottom" constant="295" id="Vba-Rt-nOc"/>
+                            <constraint firstItem="o7X-jE-vM2" firstAttribute="centerY" secondItem="2xw-Ki-RrQ" secondAttribute="centerY" id="Wp8-lR-ecY"/>
                             <constraint firstItem="OCg-Cd-WXg" firstAttribute="leading" secondItem="6hn-Fd-Kjk" secondAttribute="leadingMargin" constant="12" id="XRP-II-T6E"/>
                             <constraint firstItem="APD-CK-YNC" firstAttribute="leading" secondItem="6hn-Fd-Kjk" secondAttribute="leading" id="dG9-lV-eIB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="zIC-KJ-S1D" secondAttribute="trailing" constant="15" id="dtT-lv-yiI"/>
+                            <constraint firstItem="o7X-jE-vM2" firstAttribute="top" secondItem="zIC-KJ-S1D" secondAttribute="bottom" constant="8" symbolic="YES" id="eJI-ya-QAt"/>
                             <constraint firstItem="o0c-Ke-w9V" firstAttribute="top" secondItem="iU2-do-iU6" secondAttribute="bottom" constant="13" id="gQC-J7-BNf"/>
                             <constraint firstItem="iU2-do-iU6" firstAttribute="leading" secondItem="OCg-Cd-WXg" secondAttribute="leading" constant="3" id="mRJ-gq-QZW"/>
                             <constraint firstItem="APD-CK-YNC" firstAttribute="top" secondItem="aiM-jN-bj9" secondAttribute="bottom" id="vSe-Tp-3gL"/>
                             <constraint firstAttribute="trailing" secondItem="APD-CK-YNC" secondAttribute="trailing" id="wCf-p0-DSx"/>
+                            <constraint firstItem="2xw-Ki-RrQ" firstAttribute="leading" secondItem="zIC-KJ-S1D" secondAttribute="leading" id="zqk-Lg-UnE"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="addButton" destination="re8-vt-NmD" id="t3n-o7-y2j"/>
                         <outlet property="addButtonButton" destination="6lp-Ty-6IA" id="KgO-fm-FFS"/>
                         <outlet property="dueDatePicker" destination="zIC-KJ-S1D" id="JuW-Ay-qhx"/>
+                        <outlet property="notificationSwitch" destination="o7X-jE-vM2" id="MEB-mM-jMB"/>
                         <outlet property="taskTextField" destination="iU2-do-iU6" id="uue-E4-7yc"/>
                     </connections>
                 </viewController>
@@ -688,7 +713,7 @@
                                     <!--2015-10-20 18:50:07 +0000-->
                                 </date>
                             </datePicker>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Task" borderStyle="roundedRect" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2n6-XT-Gzv">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter name of the task" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2n6-XT-Gzv">
                                 <rect key="frame" x="35" y="20" width="531" height="30"/>
                                 <animations/>
                                 <constraints>
@@ -700,16 +725,32 @@
                                     <action selector="textChanged:" destination="6OM-MW-Zpu" eventType="editingChanged" id="C81-jj-hKE"/>
                                 </connections>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notification on start:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYT-Op-QG1">
+                                <rect key="frame" x="35" y="294" width="453" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nNF-g3-woU">
+                                <rect key="frame" x="512" y="289" width="51" height="31"/>
+                                <animations/>
+                            </switch>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="FYT-Op-QG1" firstAttribute="centerY" secondItem="nNF-g3-woU" secondAttribute="centerY" id="A7M-Ld-Apa"/>
                             <constraint firstItem="2n6-XT-Gzv" firstAttribute="leading" secondItem="7bh-aN-Qve" secondAttribute="leadingMargin" constant="15" id="B9T-CL-aiD"/>
                             <constraint firstItem="2n6-XT-Gzv" firstAttribute="centerX" secondItem="7bh-aN-Qve" secondAttribute="centerX" id="DJh-c5-4on"/>
                             <constraint firstItem="2n6-XT-Gzv" firstAttribute="leading" secondItem="aIe-KS-qBg" secondAttribute="leading" id="GSd-L4-cSW"/>
                             <constraint firstItem="i8A-Tx-Hpc" firstAttribute="top" relation="greaterThanOrEqual" secondItem="aIe-KS-qBg" secondAttribute="bottom" constant="10" id="JV3-lf-6Rm"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="nNF-g3-woU" secondAttribute="trailing" constant="19" id="Omh-Ip-emS"/>
                             <constraint firstItem="2n6-XT-Gzv" firstAttribute="top" secondItem="7bh-aN-Qve" secondAttribute="top" constant="20" symbolic="YES" id="W3u-Ml-Kp3"/>
+                            <constraint firstItem="nNF-g3-woU" firstAttribute="top" secondItem="aIe-KS-qBg" secondAttribute="bottom" constant="15" id="Y6e-V5-LzK"/>
+                            <constraint firstItem="nNF-g3-woU" firstAttribute="leading" secondItem="FYT-Op-QG1" secondAttribute="trailing" constant="24" id="grG-IF-nUj"/>
                             <constraint firstItem="aIe-KS-qBg" firstAttribute="top" secondItem="2n6-XT-Gzv" secondAttribute="bottom" constant="8" symbolic="YES" id="nY7-kK-Kw2"/>
+                            <constraint firstItem="FYT-Op-QG1" firstAttribute="leading" secondItem="aIe-KS-qBg" secondAttribute="leading" id="ogW-b0-xUu"/>
                             <constraint firstItem="aIe-KS-qBg" firstAttribute="trailing" secondItem="2n6-XT-Gzv" secondAttribute="trailing" id="wby-eF-MMc"/>
                         </constraints>
                     </view>
@@ -732,6 +773,7 @@
                     <connections>
                         <outlet property="doneButton" destination="qT4-mp-Pco" id="Adl-sm-vPI"/>
                         <outlet property="dueDatePicker" destination="aIe-KS-qBg" id="hV6-TM-OaY"/>
+                        <outlet property="notificationSwitch" destination="nNF-g3-woU" id="E4W-1D-WAg"/>
                         <outlet property="taskTexField" destination="2n6-XT-Gzv" id="crP-Jd-134"/>
                     </connections>
                 </viewController>

@@ -112,7 +112,7 @@ class SaveShedViewController: UIViewController, UIPickerViewDataSource, UIPicker
                         task.date     = entity.date
                         task.order    = entity.order
                         task.schedule = shedText
-                        
+                        task.notify   = entity.notify
                     }
                 } catch {
                     // Do something in response to error condition

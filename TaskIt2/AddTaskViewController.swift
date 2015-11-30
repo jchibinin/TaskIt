@@ -11,22 +11,21 @@ import CoreData
 
 class AddTaskViewController: UIViewController {
 
-    //var mainVC: ViewController!
-    
     @IBOutlet weak var taskTextField: UITextField!
-   // @IBOutlet weak var subtaskTextField: UITextField!
-  //  @IBOutlet weak var dueDatePicker: UIDatePicker!
+  
     @IBOutlet weak var dueDatePicker: UIDatePicker!
    
     @IBOutlet weak var addButton: UIBarButtonItem!
     
     @IBOutlet weak var addButtonButton: UIButton!
-    ///2.16
+    
+    @IBOutlet weak var notificationSwitch: UISwitch!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         dueDatePicker.date = Date.from("00:05")
         addButtonButton.enabled = false
-         addButtonButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
+        addButtonButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
         // Do any additional setup after loading the view.
     }
 
@@ -69,6 +68,7 @@ class AddTaskViewController: UIViewController {
         task.date = dueDatePicker.date
         task.order = task.lastMaxPosition() + 1
         task.schedule = ""
+        task.notify = notificationSwitch.on
         
         appDelegate.saveContext()
         

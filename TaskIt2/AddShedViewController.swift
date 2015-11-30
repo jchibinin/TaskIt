@@ -112,6 +112,7 @@ class AddShedViewController: UIViewController {
                         task.date     = entity.date
                         task.order    = entity.order
                         task.schedule = nameShed.text
+                        task.notify   = entity.notify
                         
                     }
                 } catch {

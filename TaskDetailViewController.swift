@@ -18,6 +18,7 @@ class TaskDetailViewController: UIViewController {
     @IBOutlet weak var taskTexField: UITextField!
     @IBOutlet weak var dueDatePicker: UIDatePicker!
     
+    @IBOutlet weak var notificationSwitch: UISwitch!
     @IBOutlet weak var doneButton: UIBarButtonItem!
     
     override func viewDidLoad() {
@@ -26,7 +27,7 @@ class TaskDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.taskTexField.text = detailTaskModel.task
         self.dueDatePicker.date = detailTaskModel.date!
-        
+        self.notificationSwitch.on = detailTaskModel.notify
        
     }
 
@@ -64,7 +65,7 @@ class TaskDetailViewController: UIViewController {
         let appDelegate  = UIApplication.sharedApplication().delegate as! AppDelegate
         detailTaskModel.task = taskTexField.text
         detailTaskModel.date = dueDatePicker.date
-        
+        detailTaskModel.notify = notificationSwitch.on
         appDelegate.saveContext()
         
         self.navigationController?.popToRootViewControllerAnimated(true)
