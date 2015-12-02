@@ -16,13 +16,15 @@ class TaskCell: UITableViewCell {
     
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    @IBOutlet weak var alarmImage: UIImageView!
     
-    @IBOutlet weak var notifyLabel: UILabel!
+    //@IBOutlet weak var notifyLabel: UILabel!
 
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
+       // let image = UIImage(named: "hello.png")
         // Initialization code
     }
 

@@ -18,10 +18,13 @@ class PropertiesViewController: UIViewController {
     @IBOutlet weak var segmentControl: UISegmentedControl!
     
     
+    @IBOutlet weak var finishSwitch: UISwitch!
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        self.finishSwitch.on = mainVC.notificationFinish
         
         if mainVC.from {
            segmentControl.selectedSegmentIndex = 0
@@ -60,6 +63,7 @@ class PropertiesViewController: UIViewController {
             break; 
         }
        
+        mainVC.notificationFinish = self.finishSwitch.on
         
         self.dismissViewControllerAnimated(true, completion: nil)
         

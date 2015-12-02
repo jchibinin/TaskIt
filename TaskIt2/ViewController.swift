@@ -27,7 +27,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet weak var editButton: UIBarButtonItem!
     
-    
+    var notificationFinish: Bool {
+    get {
+    var returnValue: Bool? = NSUserDefaults.standardUserDefaults().objectForKey("notificationFinish") as? Bool
+    if returnValue == nil {
+    NSUserDefaults.standardUserDefaults().setObject(true, forKey: "notificationFinish")
+    NSUserDefaults.standardUserDefaults().synchronize()
+    returnValue = true
+    }
+    return returnValue!
+    }
+    set (newValue) {
+    NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: "notificationFinish")
+    NSUserDefaults.standardUserDefaults().synchronize()
+    }
+    }
     
     
     //////////saving settings
@@ -90,6 +104,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             try fetchedResultController.performFetch()
         } catch _ {
         }
+        //notification setup
+        let notificationSettings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+        
         updateTimeEndBegin()
     }
 
@@ -97,9 +115,109 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
         super.viewDidAppear(animated)
         updateTimeEndBegin()
+        updateNotifications()
         tableView.reloadData()
+        
     }
     
+    
+    ///////////////////////////////notification///////////////////////
+    
+    func updateNotifications(){
+        //proverki na
+        guard let settings = UIApplication.sharedApplication().currentUserNotificationSettings() else { return }
+        
+        if settings.types == .None {
+            let ac = UIAlertController(title: "Can't schedule", message: "Either we don't have permission to schedule notifications, or we haven't asked yet.", preferredStyle: .Alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+            presentViewController(ac, animated: true, completion: nil)
+            return
+        }
+        ///clear all notifications
+        
+        let app:UIApplication = UIApplication.sharedApplication()
+        for oneEvent in app.scheduledLocalNotifications! {
+            let notification = oneEvent as UILocalNotification
+            //let userInfoCurrent = notification.userInfo! as! [String:AnyObject]
+           // let uid = userInfoCurrent["intime"]! as String
+           // if uid == uidtodelete {
+                //Cancelling local notification
+                app.cancelLocalNotification(notification)
+         //       break;
+           // }
+        }
+        
+        //proverka na konechnuyu datu
+        let currentTime: NSDate = NSDate.init()
+        let dateComparisionResultEnd = currentTime.compare(timeEnd)
+        if dateComparisionResultEnd == NSComparisonResult.OrderedAscending {
+            //ustanovim datu orinchaniya
+            if notificationFinish && taskArray.count>0 {
+                
+                let notification = UILocalNotification()
+                notification.fireDate = timeEnd
+                notification.alertBody = "Time over! Schedule finished"
+                notification.alertAction = "check"
+                notification.soundName = UILocalNotificationDefaultSoundName
+                notification.userInfo = ["CustomField1": "intime"]
+                UIApplication.sharedApplication().scheduleLocalNotification(notification)
+            
+            }
+            
+            var tasksSeconds:Int = 0
+            var dateTime: NSDate
+            var notify: Bool
+            var task: String
+           
+            var taskTime: NSDate
+            
+            
+            let request = taskFetchRequest()
+            request.returnsObjectsAsFaults = false
+         
+            do {
+                let results: NSArray = try managedObjectContext.executeFetchRequest(request)
+                
+                for res in results {
+                    
+                    dateTime = res.valueForKey("date") as! NSDate
+                    notify = res.valueForKey("notify") as! Bool
+                    task = res.valueForKey("task") as! String
+                    
+                    
+                    tasksSeconds = tasksSeconds + Date.toIntSec(date: dateTime)
+                    taskTime = timeEnd.dateByAddingTimeInterval(-Double(tasksSeconds))
+                    let dateComparisionResultTask = currentTime.compare(taskTime)
+                    
+                    if notify && dateComparisionResultTask == NSComparisonResult.OrderedAscending {
+                    
+                        let notification = UILocalNotification()
+                        notification.fireDate = taskTime
+                        notification.alertBody = "Task start " + task
+                        notification.alertAction = "check it"
+                        notification.soundName = UILocalNotificationDefaultSoundName
+                        notification.userInfo = ["CustomField1": "w00t"]
+                        UIApplication.sharedApplication().scheduleLocalNotification(notification)
+                        
+                        
+                    }
+
+                    
+                    
+                }
+            } catch let error as NSError {
+                // failure
+                print("Fetch failed: \(error.localizedDescription)")
+            }
+            
+   
+            
+            
+            
+        }
+        
+    }
+    ////////////////////////////////////////////////////////////
     func updateTimeEndBegin()
     {
     
@@ -263,8 +381,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.taskLabel.text = thisTask.task
         cell.descriptionLabel.text = ""
         cell.dateLabel.text = Date.toString(date: thisTask.date!)
-        cell.notifyLabel.text = String(thisTask.notify)
-        
+        cell.alarmImage.hidden = !thisTask.notify
         return cell
     }
     

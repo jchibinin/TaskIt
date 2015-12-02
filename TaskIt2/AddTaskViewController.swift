@@ -26,6 +26,7 @@ class AddTaskViewController: UIViewController {
         dueDatePicker.date = Date.from("00:05")
         addButtonButton.enabled = false
         addButtonButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
+        notificationSwitch.on = false
         // Do any additional setup after loading the view.
     }
 
