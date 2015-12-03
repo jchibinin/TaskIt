@@ -25,6 +25,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     //temp task array
     var taskArray:[NSDate]=[]
     
+    ///iad
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    
+    
     @IBOutlet weak var editButton: UIBarButtonItem!
     
     var notificationFinish: Bool {
@@ -117,6 +121,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidAppear(animated)
         updateTimeEndBegin()
         updateNotifications()
+        //iad
+        showAds()
+        
         tableView.reloadData()
         
     }
@@ -728,4 +735,12 @@ func saveContext() {
         self.performSegueWithIdentifier("showSaveShed", sender: self)
         
     }
+    
+    
+    ///iad
+    func showAds() {
+        appDelegate.adBannerView.center = CGPoint(x: self.view.bounds.size.width / 2, y: self.view.bounds.size.height - appDelegate.adBannerView.frame.size.height / 2)
+        self.view.addSubview(appDelegate.adBannerView)
+    }
+    
 }

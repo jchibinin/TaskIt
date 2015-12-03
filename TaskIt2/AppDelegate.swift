@@ -8,14 +8,21 @@
 
 import UIKit
 import CoreData
+import iAd
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, ADBannerViewDelegate  {
 
     var window: UIWindow?
 
-
+    var adBannerView: ADBannerView!
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        adBannerView = ADBannerView()
+        adBannerView.delegate = self
+        adBannerView.hidden = true
+        
         if let options = launchOptions {
             if let notification = options[UIApplicationLaunchOptionsLocalNotificationKey] as? UILocalNotification {
                 if let userInfo = notification.userInfo {
@@ -30,6 +37,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    
+    
+    
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
         if let userInfo = notification.userInfo {
             let customField1 = userInfo["CustomField1"] as! String
@@ -125,5 +135,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+    
+    ///iad
+    func bannerViewDidLoadAd(banner: ADBannerView!) {
+        adBannerView.hidden = false
+    }
+    func bannerViewActionDidFinish(banner: ADBannerView!) {
+        //
+    }
+    func bannerView(banner: ADBannerView!, didFailToReceiveAdWithError error: NSError!) {
+        adBannerView.hidden = true
+    }
 }
 

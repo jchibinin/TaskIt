@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "662CEDAF1BD3E2A60051D4DA"
-               BuildableName = "TaskIt2.app"
-               BlueprintName = "TaskIt2"
-               ReferencedContainer = "container:TaskIt2.xcodeproj">
+               BuildableName = "InTime.app"
+               BlueprintName = "InTime"
+               ReferencedContainer = "container:InTime.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "662CEDC61BD3E2A70051D4DA"
-               BuildableName = "TaskIt2Tests.xctest"
-               BlueprintName = "TaskIt2Tests"
-               ReferencedContainer = "container:TaskIt2.xcodeproj">
+               BuildableName = "InTime.xctest"
+               BlueprintName = "InTimeTests"
+               ReferencedContainer = "container:InTime.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "662CEDD11BD3E2A70051D4DA"
-               BuildableName = "TaskIt2UITests.xctest"
-               BlueprintName = "TaskIt2UITests"
-               ReferencedContainer = "container:TaskIt2.xcodeproj">
+               BuildableName = "InTime.xctest"
+               BlueprintName = "InTimeUITests"
+               ReferencedContainer = "container:InTime.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "662CEDAF1BD3E2A60051D4DA"
-            BuildableName = "TaskIt2.app"
-            BlueprintName = "TaskIt2"
-            ReferencedContainer = "container:TaskIt2.xcodeproj">
+            BuildableName = "InTime.app"
+            BlueprintName = "InTime"
+            ReferencedContainer = "container:InTime.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "662CEDAF1BD3E2A60051D4DA"
-            BuildableName = "TaskIt2.app"
-            BlueprintName = "TaskIt2"
-            ReferencedContainer = "container:TaskIt2.xcodeproj">
+            BuildableName = "InTime.app"
+            BlueprintName = "InTime"
+            ReferencedContainer = "container:InTime.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -95,9 +95,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "662CEDAF1BD3E2A60051D4DA"
-            BuildableName = "TaskIt2.app"
-            BlueprintName = "TaskIt2"
-            ReferencedContainer = "container:TaskIt2.xcodeproj">
+            BuildableName = "InTime.app"
+            BlueprintName = "InTime"
+            ReferencedContainer = "container:InTime.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

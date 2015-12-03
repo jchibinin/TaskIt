@@ -46,7 +46,7 @@
 
 /* Begin PBXFileReference section */
 		66045BBF1BE7EF2100F63E42 /* PropertiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertiesViewController.swift; sourceTree = "<group>"; };
-		662CEDB01BD3E2A60051D4DA /* TaskIt2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskIt2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		662CEDB01BD3E2A60051D4DA /* InTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		662CEDB31BD3E2A70051D4DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		662CEDB51BD3E2A70051D4DA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		662CEDB81BD3E2A70051D4DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -54,10 +54,10 @@
 		662CEDBD1BD3E2A70051D4DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		662CEDC01BD3E2A70051D4DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		662CEDC21BD3E2A70051D4DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		662CEDC71BD3E2A70051D4DA /* TaskIt2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaskIt2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		662CEDC71BD3E2A70051D4DA /* InTime.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InTime.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		662CEDCB1BD3E2A70051D4DA /* TaskIt2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskIt2Tests.swift; sourceTree = "<group>"; };
 		662CEDCD1BD3E2A70051D4DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		662CEDD21BD3E2A70051D4DA /* TaskIt2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaskIt2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		662CEDD21BD3E2A70051D4DA /* InTime.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InTime.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		662CEDD61BD3E2A70051D4DA /* TaskIt2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskIt2UITests.swift; sourceTree = "<group>"; };
 		662CEDD81BD3E2A70051D4DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		662CEE201BD423310051D4DA /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskCell.swift; path = ../TaskCell.swift; sourceTree = "<group>"; };
@@ -113,9 +113,9 @@
 		662CEDB11BD3E2A60051D4DA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				662CEDB01BD3E2A60051D4DA /* TaskIt2.app */,
-				662CEDC71BD3E2A70051D4DA /* TaskIt2Tests.xctest */,
-				662CEDD21BD3E2A70051D4DA /* TaskIt2UITests.xctest */,
+				662CEDB01BD3E2A60051D4DA /* InTime.app */,
+				662CEDC71BD3E2A70051D4DA /* InTime.xctest */,
+				662CEDD21BD3E2A70051D4DA /* InTime.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -165,9 +165,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		662CEDAF1BD3E2A60051D4DA /* TaskIt2 */ = {
+		662CEDAF1BD3E2A60051D4DA /* InTime */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 662CEDDB1BD3E2A70051D4DA /* Build configuration list for PBXNativeTarget "TaskIt2" */;
+			buildConfigurationList = 662CEDDB1BD3E2A70051D4DA /* Build configuration list for PBXNativeTarget "InTime" */;
 			buildPhases = (
 				662CEDAC1BD3E2A60051D4DA /* Sources */,
 				662CEDAD1BD3E2A60051D4DA /* Frameworks */,
@@ -177,14 +177,14 @@
 			);
 			dependencies = (
 			);
-			name = TaskIt2;
+			name = InTime;
 			productName = TaskIt2;
-			productReference = 662CEDB01BD3E2A60051D4DA /* TaskIt2.app */;
+			productReference = 662CEDB01BD3E2A60051D4DA /* InTime.app */;
 			productType = "com.apple.product-type.application";
 		};
-		662CEDC61BD3E2A70051D4DA /* TaskIt2Tests */ = {
+		662CEDC61BD3E2A70051D4DA /* InTimeTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 662CEDDE1BD3E2A70051D4DA /* Build configuration list for PBXNativeTarget "TaskIt2Tests" */;
+			buildConfigurationList = 662CEDDE1BD3E2A70051D4DA /* Build configuration list for PBXNativeTarget "InTimeTests" */;
 			buildPhases = (
 				662CEDC31BD3E2A70051D4DA /* Sources */,
 				662CEDC41BD3E2A70051D4DA /* Frameworks */,
@@ -195,14 +195,14 @@
 			dependencies = (
 				662CEDC91BD3E2A70051D4DA /* PBXTargetDependency */,
 			);
-			name = TaskIt2Tests;
+			name = InTimeTests;
 			productName = TaskIt2Tests;
-			productReference = 662CEDC71BD3E2A70051D4DA /* TaskIt2Tests.xctest */;
+			productReference = 662CEDC71BD3E2A70051D4DA /* InTime.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		662CEDD11BD3E2A70051D4DA /* TaskIt2UITests */ = {
+		662CEDD11BD3E2A70051D4DA /* InTimeUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 662CEDE11BD3E2A70051D4DA /* Build configuration list for PBXNativeTarget "TaskIt2UITests" */;
+			buildConfigurationList = 662CEDE11BD3E2A70051D4DA /* Build configuration list for PBXNativeTarget "InTimeUITests" */;
 			buildPhases = (
 				662CEDCE1BD3E2A70051D4DA /* Sources */,
 				662CEDCF1BD3E2A70051D4DA /* Frameworks */,
@@ -213,9 +213,9 @@
 			dependencies = (
 				662CEDD41BD3E2A70051D4DA /* PBXTargetDependency */,
 			);
-			name = TaskIt2UITests;
+			name = InTimeUITests;
 			productName = TaskIt2UITests;
-			productReference = 662CEDD21BD3E2A70051D4DA /* TaskIt2UITests.xctest */;
+			productReference = 662CEDD21BD3E2A70051D4DA /* InTime.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -225,7 +225,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0710;
-				ORGANIZATIONNAME = Bitfoundation;
+				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					662CEDAF1BD3E2A60051D4DA = {
 						CreatedOnToolsVersion = 7.1;
@@ -240,7 +240,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 662CEDAB1BD3E2A60051D4DA /* Build configuration list for PBXProject "TaskIt2" */;
+			buildConfigurationList = 662CEDAB1BD3E2A60051D4DA /* Build configuration list for PBXProject "InTime" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -253,9 +253,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				662CEDAF1BD3E2A60051D4DA /* TaskIt2 */,
-				662CEDC61BD3E2A70051D4DA /* TaskIt2Tests */,
-				662CEDD11BD3E2A70051D4DA /* TaskIt2UITests */,
+				662CEDAF1BD3E2A60051D4DA /* InTime */,
+				662CEDC61BD3E2A70051D4DA /* InTimeTests */,
+				662CEDD11BD3E2A70051D4DA /* InTimeUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -328,12 +328,12 @@
 /* Begin PBXTargetDependency section */
 		662CEDC91BD3E2A70051D4DA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 662CEDAF1BD3E2A60051D4DA /* TaskIt2 */;
+			target = 662CEDAF1BD3E2A60051D4DA /* InTime */;
 			targetProxy = 662CEDC81BD3E2A70051D4DA /* PBXContainerItemProxy */;
 		};
 		662CEDD41BD3E2A70051D4DA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 662CEDAF1BD3E2A60051D4DA /* TaskIt2 */;
+			target = 662CEDAF1BD3E2A60051D4DA /* InTime */;
 			targetProxy = 662CEDD31BD3E2A70051D4DA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -448,7 +448,7 @@
 				INFOPLIST_FILE = TaskIt2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.chibinin.InTime;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = InTime;
 			};
 			name = Debug;
 		};
@@ -459,7 +459,7 @@
 				INFOPLIST_FILE = TaskIt2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.chibinin.InTime;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = InTime;
 			};
 			name = Release;
 		};
@@ -470,8 +470,8 @@
 				INFOPLIST_FILE = TaskIt2Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.bitfoundation.TaskIt2Tests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TaskIt2.app/TaskIt2";
+				PRODUCT_NAME = InTime;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/InTime.app/InTime";
 			};
 			name = Debug;
 		};
@@ -482,8 +482,8 @@
 				INFOPLIST_FILE = TaskIt2Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.bitfoundation.TaskIt2Tests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TaskIt2.app/TaskIt2";
+				PRODUCT_NAME = InTime;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/InTime.app/InTime";
 			};
 			name = Release;
 		};
@@ -493,7 +493,7 @@
 				INFOPLIST_FILE = TaskIt2UITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.bitfoundation.TaskIt2UITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = InTime;
 				TEST_TARGET_NAME = TaskIt2;
 				USES_XCTRUNNER = YES;
 			};
@@ -505,7 +505,7 @@
 				INFOPLIST_FILE = TaskIt2UITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.bitfoundation.TaskIt2UITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = InTime;
 				TEST_TARGET_NAME = TaskIt2;
 				USES_XCTRUNNER = YES;
 			};
@@ -514,7 +514,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		662CEDAB1BD3E2A60051D4DA /* Build configuration list for PBXProject "TaskIt2" */ = {
+		662CEDAB1BD3E2A60051D4DA /* Build configuration list for PBXProject "InTime" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				662CEDD91BD3E2A70051D4DA /* Debug */,
@@ -523,7 +523,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		662CEDDB1BD3E2A70051D4DA /* Build configuration list for PBXNativeTarget "TaskIt2" */ = {
+		662CEDDB1BD3E2A70051D4DA /* Build configuration list for PBXNativeTarget "InTime" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				662CEDDC1BD3E2A70051D4DA /* Debug */,
@@ -532,7 +532,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		662CEDDE1BD3E2A70051D4DA /* Build configuration list for PBXNativeTarget "TaskIt2Tests" */ = {
+		662CEDDE1BD3E2A70051D4DA /* Build configuration list for PBXNativeTarget "InTimeTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				662CEDDF1BD3E2A70051D4DA /* Debug */,
@@ -541,7 +541,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		662CEDE11BD3E2A70051D4DA /* Build configuration list for PBXNativeTarget "TaskIt2UITests" */ = {
+		662CEDE11BD3E2A70051D4DA /* Build configuration list for PBXNativeTarget "InTimeUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				662CEDE21BD3E2A70051D4DA /* Debug */,
