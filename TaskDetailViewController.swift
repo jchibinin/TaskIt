@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TaskDetailViewController: UIViewController {
+class TaskDetailViewController: UIViewController, UITextFieldDelegate  {
 
     var detailTaskModel: TaskModel!
     
@@ -28,9 +28,15 @@ class TaskDetailViewController: UIViewController {
         self.taskTexField.text = detailTaskModel.task
         self.dueDatePicker.date = detailTaskModel.date!
         self.notificationSwitch.on = detailTaskModel.notify
-       
+        taskTexField.delegate = self
     }
 
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        taskTexField.resignFirstResponder()
+        return true
+    }
+    
+    
     @IBAction func textChanged(sender: UITextField) {
     
         if taskTexField.text == "" {

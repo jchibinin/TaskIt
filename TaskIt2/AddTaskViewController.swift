@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class AddTaskViewController: UIViewController {
+class AddTaskViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var taskTextField: UITextField!
   
@@ -27,12 +27,18 @@ class AddTaskViewController: UIViewController {
         addButtonButton.enabled = false
         addButtonButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
         notificationSwitch.on = false
+        taskTextField.delegate = self
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        taskTextField.resignFirstResponder()
+        return true
     }
     
     @IBAction func taskChanged(sender: UITextField) {

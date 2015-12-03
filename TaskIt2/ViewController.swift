@@ -109,6 +109,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
         
         updateTimeEndBegin()
+        tableView.reloadData()
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -425,7 +426,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         let label : UILabel = UILabel()
         label.textColor =  UIColor.darkGrayColor()
-        label.backgroundColor = UIColor(red: 0.227, green: 0.226, blue: 0.229, alpha: 0.1)
+        label.backgroundColor = UIColor.groupTableViewBackgroundColor()
         //label.textAlignment =
         label.text = "   "+title
    
@@ -443,7 +444,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         let label : UILabel = UILabel()
         label.textColor =  UIColor.darkGrayColor()
-        label.backgroundColor = UIColor(red: 0.227, green: 0.226, blue: 0.229, alpha: 0.1)
+        label.backgroundColor = UIColor.groupTableViewBackgroundColor()
         //label.textAlignment =
         label.text = "   "+title
         
