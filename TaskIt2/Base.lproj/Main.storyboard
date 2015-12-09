@@ -4,12 +4,13 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9040"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--InTime-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TaskIt2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="InTime" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -24,7 +25,7 @@
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" showsReorderControl="YES" indentationWidth="10" reuseIdentifier="myCell" rowHeight="75" id="pPi-U4-sPH" customClass="TaskCell" customModule="TaskIt2" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" showsReorderControl="YES" indentationWidth="10" reuseIdentifier="myCell" rowHeight="75" id="pPi-U4-sPH" customClass="TaskCell" customModule="InTime" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="35" width="600" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pPi-U4-sPH" id="3n5-uN-RJM">
@@ -38,13 +39,6 @@
                                                         <constraint firstAttribute="width" constant="73" id="4vf-bt-E8d"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Task" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4IR-He-03u">
-                                                    <rect key="frame" x="23" y="13" width="454" height="21"/>
-                                                    <animations/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -65,6 +59,13 @@
                                                         <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
                                                     </accessibility>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Task" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4IR-He-03u">
+                                                    <rect key="frame" x="23" y="13" width="454" height="21"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <animations/>
                                             <constraints>
@@ -132,18 +133,26 @@
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="InTime" id="nun-5O-iYo">
-                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="ovw-ye-hQH">
+                        <barButtonItem key="leftBarButtonItem" image="Settings" id="y4K-jQ-dw8">
                             <color key="tintColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <action selector="addButtonTapped:" destination="BYZ-38-t0r" id="Pnq-Ly-TbH"/>
+                                <action selector="showInfoButtonTapped:" destination="BYZ-38-t0r" id="Cde-4G-hfn"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" tag="100" title="Edit" id="nXk-af-LgZ">
-                            <color key="tintColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="editButtonTapped:" destination="BYZ-38-t0r" id="MI0-za-f1B"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem tag="100" title="Edit" id="nXk-af-LgZ">
+                                <color key="tintColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="editButtonTapped:" destination="BYZ-38-t0r" id="MI0-za-f1B"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="add" id="ovw-ye-hQH">
+                                <color key="tintColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="addButtonTapped:" destination="BYZ-38-t0r" id="Pnq-Ly-TbH"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -155,16 +164,17 @@
                         <segue destination="c4B-DI-4Zg" kind="presentation" identifier="showAddShed" id="kvn-Ex-cgH"/>
                         <segue destination="zEI-8r-cy7" kind="presentation" identifier="showSaveShed" id="gdG-eg-q86"/>
                         <segue destination="mKO-KJ-Srn" kind="presentation" identifier="showOpenShed" id="EgH-EA-mhk"/>
+                        <segue destination="5z8-Q0-dd6" kind="show" identifier="showInfo" id="evy-fb-WR0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="934" y="351"/>
+            <point key="canvasLocation" x="924" y="347"/>
         </scene>
         <!--Properties View Controller-->
         <scene sceneID="3cZ-mt-3z6">
             <objects>
-                <viewController id="97I-Bd-oxQ" customClass="PropertiesViewController" customModule="TaskIt2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="97I-Bd-oxQ" customClass="PropertiesViewController" customModule="InTime" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Y8A-XG-0AW"/>
                         <viewControllerLayoutGuide type="bottom" id="TKL-Ft-XQC"/>
@@ -303,7 +313,7 @@
         <!--Add Shed View Controller-->
         <scene sceneID="LBe-PO-7gE">
             <objects>
-                <viewController id="c4B-DI-4Zg" customClass="AddShedViewController" customModule="TaskIt2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="c4B-DI-4Zg" customClass="AddShedViewController" customModule="InTime" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DzN-qu-ITG"/>
                         <viewControllerLayoutGuide type="bottom" id="Mod-nr-JqF"/>
@@ -382,7 +392,7 @@
         <!--Save Shed View Controller-->
         <scene sceneID="UgX-UA-Ueg">
             <objects>
-                <viewController id="zEI-8r-cy7" customClass="SaveShedViewController" customModule="TaskIt2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="zEI-8r-cy7" customClass="SaveShedViewController" customModule="InTime" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4OA-uR-XmZ"/>
                         <viewControllerLayoutGuide type="bottom" id="0ib-Zq-yeq"/>
@@ -476,7 +486,7 @@
         <!--Open Shed View Controller-->
         <scene sceneID="7gd-c3-Hbk">
             <objects>
-                <viewController id="mKO-KJ-Srn" customClass="OpenShedViewController" customModule="TaskIt2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="mKO-KJ-Srn" customClass="OpenShedViewController" customModule="InTime" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qcF-LL-2Kn"/>
                         <viewControllerLayoutGuide type="bottom" id="bbQ-97-JqU"/>
@@ -582,7 +592,7 @@
         <!--Add Task View Controller-->
         <scene sceneID="5ir-sP-qOn">
             <objects>
-                <viewController id="gWK-Ta-Tyh" customClass="AddTaskViewController" customModule="TaskIt2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="gWK-Ta-Tyh" customClass="AddTaskViewController" customModule="InTime" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aiM-jN-bj9"/>
                         <viewControllerLayoutGuide type="bottom" id="ukZ-Io-GtT"/>
@@ -720,7 +730,7 @@
         <!--Detail-->
         <scene sceneID="MDJ-Hm-Bks">
             <objects>
-                <viewController modalTransitionStyle="partialCurl" hidesBottomBarWhenPushed="YES" id="6OM-MW-Zpu" customClass="TaskDetailViewController" customModule="TaskIt2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="partialCurl" hidesBottomBarWhenPushed="YES" id="6OM-MW-Zpu" customClass="TaskDetailViewController" customModule="InTime" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fBd-1w-tA5"/>
                         <viewControllerLayoutGuide type="bottom" id="i8A-Tx-Hpc"/>
@@ -802,6 +812,35 @@
             </objects>
             <point key="canvasLocation" x="1651" y="-94"/>
         </scene>
+        <!--Info-->
+        <scene sceneID="b5I-Hd-2lE">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="5z8-Q0-dd6" customClass="InfoViewController" customModule="InTime" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4Rt-hn-Q7f"/>
+                        <viewControllerLayoutGuide type="bottom" id="u4l-ys-1Bh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Sw7-BL-jge">
+                        <rect key="frame" x="0.0" y="64" width="600" height="492"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
+                    <navigationItem key="navigationItem" title="Info" id="RAl-3R-3VK">
+                        <barButtonItem key="leftBarButtonItem" systemItem="reply" id="vJG-zk-APx">
+                            <color key="tintColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="backButtonTapped:" destination="5z8-Q0-dd6" id="m3o-V9-7KU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z5u-dq-rNo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="258" y="-299"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="wzH-1Q-qQG">
             <objects>
@@ -834,6 +873,7 @@
         <image name="Load" width="22" height="22"/>
         <image name="Save" width="22" height="22"/>
         <image name="SetTime" width="22" height="22"/>
+        <image name="Settings" width="22" height="22"/>
         <image name="new" width="22" height="22"/>
     </resources>
     <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>

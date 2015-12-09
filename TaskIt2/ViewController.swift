@@ -31,6 +31,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet weak var editButton: UIBarButtonItem!
     
+    
     var notificationFinish: Bool {
     get {
     var returnValue: Bool? = NSUserDefaults.standardUserDefaults().objectForKey("notificationFinish") as? Bool
@@ -300,20 +301,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                     cellText = String(format:"%d:%02d", minutes, secsToEndTask - minutes*60)
                 }
                ///update cell
-                let indexPath: NSIndexPath = NSIndexPath(forItem: activeTask, inSection: 0)
+                    if let indexPath: NSIndexPath = NSIndexPath(forItem: activeTask, inSection: 0) {
                 let cell: TaskCell = tableView.cellForRowAtIndexPath(indexPath) as! TaskCell
                     
                     cell.descriptionLabel.text = cellText
-
-            //} else {
+                    }
+            } else {
        
                 // kosyak?
             
               // if self.tableView.isAccessibilityElement {
-             //   let indexPath: NSIndexPath = NSIndexPath(forItem: index, inSection: 0)
-             //   let emtyCell: TaskCell = self.tableView.cellForRowAtIndexPath(indexPath) as! TaskCell
-            //        emtyCell.descriptionLabel.text = ""
-             //  }
+                if let indexPath: NSIndexPath = NSIndexPath(forItem: index, inSection: 0) {
+               let emtyCell: TaskCell = self.tableView.cellForRowAtIndexPath(indexPath) as! TaskCell
+                    emtyCell.descriptionLabel.text = ""
+               }
               
             }
             
@@ -496,7 +497,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                         managedObjectContext.deleteObject(itemToDelete)
                         do {
                             try managedObjectContext.save()
-                            tableView.reloadData()
+                            self.viewDidAppear(true)
                         } catch {
                             print(error)
                         }
@@ -603,9 +604,9 @@ func saveContext() {
    func controllerDidChangeContent(controller: NSFetchedResultsController)
    {
     
-    updateTimeEndBegin()
-    tableView.reloadData()
-   
+    //updateTimeEndBegin()
+    self.viewDidAppear(true)
+    
 }
 ///////////////////buttons
     
@@ -741,6 +742,13 @@ func saveContext() {
     func showAds() {
         appDelegate.adBannerView.center = CGPoint(x: self.view.bounds.size.width / 2, y: self.view.bounds.size.height - appDelegate.adBannerView.frame.size.height / 2)
         self.view.addSubview(appDelegate.adBannerView)
+    }
+   
+    //info
+    @IBAction func showInfoButtonTapped(sender: UIBarButtonItem) {
+    
+        self.performSegueWithIdentifier("showInfo", sender: self)
+        
     }
     
 }

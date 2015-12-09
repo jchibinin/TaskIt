@@ -25,6 +25,7 @@
 		665C61A71BEE6DEC00F4ABA6 /* SaveShedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665C61A61BEE6DEC00F4ABA6 /* SaveShedViewController.swift */; };
 		66D0EBBD1BD6C04D00C1C785 /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D0EBBC1BD6C04D00C1C785 /* TaskDetailViewController.swift */; };
 		66F0AA811BDD67C8007E4683 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F0AA801BDD67C8007E4683 /* AddTaskViewController.swift */; };
+		66FA94BB1C18C063000C24DD /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FA94BA1C18C063000C24DD /* InfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		6673279C1BFBA0860084AA48 /* TaskModel 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "TaskModel 3.xcdatamodel"; sourceTree = "<group>"; };
 		66D0EBBC1BD6C04D00C1C785 /* TaskDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskDetailViewController.swift; path = ../TaskDetailViewController.swift; sourceTree = "<group>"; };
 		66F0AA801BDD67C8007E4683 /* AddTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
+		66FA94BA1C18C063000C24DD /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 				665696271BF27D49007C9509 /* TaskModel.swift */,
 				6656961F1BF253FE007C9509 /* CoreData.framework */,
 				662CEDBA1BD3E2A70051D4DA /* TaskModel.xcdatamodeld */,
+				66FA94BA1C18C063000C24DD /* InfoViewController.swift */,
 			);
 			path = TaskIt2;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				665294171BEFA7C500A16D6D /* OpenShedViewController.swift in Sources */,
 				665C61A71BEE6DEC00F4ABA6 /* SaveShedViewController.swift in Sources */,
 				662CEDB61BD3E2A70051D4DA /* ViewController.swift in Sources */,
+				66FA94BB1C18C063000C24DD /* InfoViewController.swift in Sources */,
 				662CEDB41BD3E2A70051D4DA /* AppDelegate.swift in Sources */,
 				662CEDBC1BD3E2A70051D4DA /* TaskModel.xcdatamodeld in Sources */,
 				66045BC01BE7EF2100F63E42 /* PropertiesViewController.swift in Sources */,
